@@ -108,11 +108,6 @@
       "destination": "/index.html"
     }
   ],
-  "functions": {
-    "app/api/**/*.ts": {
-      "runtime": "@vercel/node"
-    }
-  },
   "crons": [],
   "regions": ["iad1"],
   "public": false,
