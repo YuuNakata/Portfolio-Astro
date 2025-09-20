@@ -10,10 +10,6 @@
     }
   },
   "env": {
-    "PUBLIC_SUPABASE_URL": "@public_supabase_url",
-    "PUBLIC_SUPABASE_ANON_KEY": "@public_supabase_anon_key",
-    "SUPABASE_SERVICE_ROLE_KEY": "@supabase_service_role_key",
-    "PUBLIC_SITE_URL": "https://raydel-portfolio.vercel.app",
     "PUBLIC_SITE_NAME": "Raydel Ernesto Reuco García - Portfolio",
     "PUBLIC_DEFAULT_LANGUAGE": "es",
     "PUBLIC_ENABLE_ANIMATIONS": "true",
