@@ -1,8 +1,9 @@
 {
-  "buildCommand": "pnpm build",
-  "outputDirectory": "dist",
-  "installCommand": "pnpm install",
   "framework": "astro",
+  "buildCommand": "astro check && astro build",
+  "outputDirectory": "dist",
+  "installCommand": "pnpm install --frozen-lockfile",
+  "devCommand": "astro dev --host",
   "git": {
     "deploymentEnabled": {
       "main": true
@@ -45,9 +46,7 @@
       ]
     },
     {
- 
-    
-      "source": "/(.*\\.(css|js|woff|woff2|ttf|eot|ico|png|jpg|jpeg|gif|svg|webp|avif))",
+      "source": "/:path*\\.(css|js|woff|woff2|ttf|eot|ico|png|jpg|jpeg|gif|svg|webp|avif)",
       "headers": [
         {
           "key": "Cache-Control",
@@ -120,11 +119,6 @@
   },
   "crons": [],
   "regions": ["iad1"],
-  "framework": "astro",
-  "buildCommand": "pnpm run build",
-  "devCommand": "pnpm run dev",
-  "installCommand": "pnpm install --frozen-lockfile",
-  "outputDirectory": "dist",
   "public": false,
   "github": {
     "silent": true
