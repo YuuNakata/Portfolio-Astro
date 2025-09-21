@@ -11,7 +11,7 @@ export const portfolioData: PortfolioData = {
       "https://www.linkedin.com/in/raydel-ernesto-reuco-garc%C3%ADa-contact-info",
     summary:
       "Strong foundation in computer engineering and programming is held, with a passion for using technology to enhance user experiences and solve complex problems. Eagerness to contribute to a team focused on cutting edge software development is evident, along with commitment to continuous learning and technological excellence. Skills in various programming languages and database management position well for impactful contributions in a dynamic environment.",
-    avatar: undefined,
+    avatar: "/images/avatar/raydel-avatar.jpg",
   },
 
   education: [
