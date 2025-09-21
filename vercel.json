@@ -9,6 +9,7 @@
       "main": true
     }
   },
+  
   "env": {
     "PUBLIC_SUPABASE_URL": "@supabase_url",
     "PUBLIC_SUPABASE_ANON_KEY": "@supabase_anon_key",
