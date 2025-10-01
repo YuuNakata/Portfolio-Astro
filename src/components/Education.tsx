@@ -47,7 +47,6 @@ const Education: React.FC = () => {
   const EducationItem: React.FC<EducationItemProps> = ({
     education,
     index,
-    isLast,
   }) => {
     const [isHovered, setIsHovered] = React.useState(false);
     const isCurrent = isCurrentEducation(education.endDate);

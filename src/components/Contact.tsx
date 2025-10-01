@@ -6,9 +6,9 @@ import {
   Coffee,
   ExternalLink,
   FileText,
-  Github,
+  GitBranch,
   Heart,
-  Linkedin,
+  User,
   Loader,
   Mail,
   MapPin,
@@ -136,9 +136,9 @@ const Contact: React.FC = () => {
   const getSocialIcon = (platform: string) => {
     switch (platform.toLowerCase()) {
       case "github":
-        return <Github className="w-5 h-5" />;
+        return <GitBranch className="w-5 h-5" />;
       case "linkedin":
-        return <Linkedin className="w-5 h-5" />;
+        return <User className="w-5 h-5" />;
       case "email":
         return <Mail className="w-5 h-5" />;
       case "phone":

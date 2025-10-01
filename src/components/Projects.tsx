@@ -1,10 +1,9 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, easeOut } from "framer-motion";
 import {
   Code2,
   ExternalLink,
   Eye,
   Filter,
-  Github,
   Grid,
   List,
   Search,
@@ -33,14 +32,6 @@ const Projects: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [selectedTech, setSelectedTech] = useState<string | null>(null);
-
-  const allTechnologies = useMemo(() => {
-    const techs = new Set<string>();
-    portfolioData.projects.forEach((project) => {
-      project.technologies.forEach((tech) => techs.add(tech));
-    });
-    return Array.from(techs).sort();
-  }, []);
 
   const filteredProjects = useMemo(() => {
     return portfolioData.projects.filter((project) => {
@@ -71,7 +62,7 @@ const Projects: React.FC = () => {
         transition: {
           duration: 0.6,
           delay: index * 0.1,
-          ease: "easeOut",
+          ease: easeOut,
         },
       },
     };
@@ -135,7 +126,7 @@ const Projects: React.FC = () => {
                       className="p-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
                       aria-label={t("projects.view.code")}
                     >
-                      <Github className="w-5 h-5" />
+                      <Code2 className="w-5 h-5" />
                     </motion.a>
                   )}
                   {project.liveUrl && (
@@ -248,7 +239,7 @@ const Projects: React.FC = () => {
                   className="p-3 bg-white text-gray-900 rounded-full hover:bg-gray-800 hover:text-white transition-colors"
                   aria-label={t("projects.view.code")}
                 >
-                  <Github className="w-5 h-5" />
+                  <Code2 className="w-5 h-5" />
                 </motion.a>
               )}
             </div>

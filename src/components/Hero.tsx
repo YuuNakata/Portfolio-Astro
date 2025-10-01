@@ -5,7 +5,7 @@ import { useLanguage } from "../contexts/LanguageContext";
 import { portfolioData } from "../data/portfolio";
 
 const Hero: React.FC = () => {
-  const { currentLanguage, setLanguage, t } = useLanguage();
+  const { t } = useLanguage();
 
   const handleContactClick = () => {
     const contactSection = document.querySelector("#contact");

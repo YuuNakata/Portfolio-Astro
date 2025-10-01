@@ -6,12 +6,9 @@ import {
   Database,
   Code,
   Play,
-  Pause,
   RotateCcw,
   ChevronRight,
   Cpu,
-  Globe,
-  TrendingUp,
 } from "lucide-react";
 import React, { useState, useEffect, useCallback } from "react";
 import { useLanguage } from "../contexts/LanguageContext";
@@ -27,7 +24,7 @@ interface InteractiveDemo {
 }
 
 const InteractiveSkills: React.FC = () => {
-  const { t } = useLanguage();
+  useLanguage();
   const sectionRef = React.useRef<HTMLElement>(null);
   const { hasIntersected } = useIntersectionObserver(sectionRef, {
     threshold: 0.1,
