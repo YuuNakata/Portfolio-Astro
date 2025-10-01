@@ -56,6 +56,12 @@ const InteractiveSkills: React.FC = () => {
     resetSortingArray();
   }, []);
 
+  // Reset responsive demo state when switching demos
+  useEffect(() => {
+    setIsResponsiveMode(false);
+    setIsAnimating(false);
+  }, [activeDemo]);
+
   const resetSortingArray = useCallback(() => {
     const newArray = Array.from(
       { length: 8 },

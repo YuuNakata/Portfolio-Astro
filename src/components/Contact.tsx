@@ -7,7 +7,7 @@ import {
   ExternalLink,
   FileText,
   GitBranch,
-  Heart,
+  Brain,
   User,
   Loader,
   Mail,
@@ -203,7 +203,7 @@ const Contact: React.FC = () => {
         />
 
         {/* Floating Contact Icons */}
-        {[Mail, Phone, MessageSquare, Heart].map((Icon, i) => (
+        {[Mail, Phone, MessageSquare, Brain].map((Icon, i) => (
           <motion.div
             key={i}
             animate={{
@@ -633,7 +633,7 @@ const Contact: React.FC = () => {
               suppressHydrationWarning
             >
               <span>{t("contact.bottom.made")}</span>
-              <Heart className="w-4 h-4 text-red-500 animate-pulse" />
+              <Brain className="w-4 h-4 text-orange-500 opacity-60" />
               <span>{t("contact.bottom.and")}</span>
               <Coffee className="w-4 h-4 text-brown-500" />
             </div>

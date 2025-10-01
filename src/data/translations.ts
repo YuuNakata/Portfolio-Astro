@@ -279,6 +279,40 @@ export const translations: Translation = {
     en: "Search projects...",
   },
 
+  // Individual Project Translations
+  "project.personal-portfolio.title": {
+    es: "Portafolio Web Personal",
+    en: "Personal Web Portfolio",
+  },
+  "project.personal-portfolio.description": {
+    es: "Desarrollo completo de este portafolio web utilizando Astro, React y TypeScript. Incluye sistema de internacionalización, formularios con validación, integración con Supabase y optimización automática de imágenes.",
+    en: "Complete development of this web portfolio using Astro, React and TypeScript. Includes internationalization system, forms with validation, Supabase integration and automatic image optimization.",
+  },
+  "project.academic-management.title": {
+    es: "Sistema de Gestión Académica",
+    en: "Academic Management System",
+  },
+  "project.academic-management.description": {
+    es: "Proyecto académico desarrollado con Django para gestión de estudiantes, cursos y calificaciones. Incluye autenticación de usuarios, paneles administrativos y reportes automatizados.",
+    en: "Academic project developed with Django for managing students, courses and grades. Includes user authentication, administrative panels and automated reports.",
+  },
+  "project.unity-game.title": {
+    es: "Juego 2D con Unity",
+    en: "Unity 2D Game",
+  },
+  "project.unity-game.description": {
+    es: "Desarrollo de un juego 2D educativo con Unity, incluyendo mecánicas de juego, sistema de puntuación y niveles progresivos. Enfocado en enseñar conceptos de programación de manera interactiva.",
+    en: "Development of an educational 2D game with Unity, including game mechanics, scoring system and progressive levels. Focused on teaching programming concepts interactively.",
+  },
+  "project.nodejs-api.title": {
+    es: "API REST con Node.js",
+    en: "Node.js REST API",
+  },
+  "project.nodejs-api.description": {
+    es: "Desarrollo de una API REST para una aplicación de gestión de tareas. Incluye autenticación JWT, validación de datos, documentación con Swagger y pruebas automatizadas.",
+    en: "Development of a REST API for a task management application. Includes JWT authentication, data validation, Swagger documentation and automated testing.",
+  },
+
   // What I Bring Section
   "whatibring.title": {
     es: "Lo que Aporto",
@@ -361,8 +395,8 @@ export const translations: Translation = {
     en: "Have a project in mind?",
   },
   "contact.description": {
-    es: "Estoy disponible para discutir oportunidades de colaboración, proyectos freelance o posiciones de tiempo completo.",
-    en: "I'm available to discuss collaboration opportunities, freelance projects, or full-time positions.",
+    es: "Estoy disponible para discutir oportunidades de colaboración, proyectos freelance y trabajos de medio tiempo.",
+    en: "I'm available to discuss collaboration opportunities, freelance projects, and part-time work.",
   },
   "contact.form.name": {
     es: "Nombre completo",
@@ -570,8 +604,8 @@ export const translations: Translation = {
     en: "Explore web development projects, database applications, and games created by Raydel Ernesto Reuco García.",
   },
   "meta.description.contact": {
-    es: "Contáctame para discutir oportunidades de colaboración, proyectos freelance o posiciones de desarrollo de software.",
-    en: "Contact me to discuss collaboration opportunities, freelance projects, or software development positions.",
+    es: "Contáctame para discutir oportunidades de colaboración, proyectos freelance y trabajos de medio tiempo en desarrollo de software.",
+    en: "Contact me to discuss collaboration opportunities, freelance projects, and part-time software development work.",
   },
 
   // Accessibility

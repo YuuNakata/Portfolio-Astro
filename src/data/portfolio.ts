@@ -202,9 +202,8 @@ export const portfolioData: PortfolioData = {
   projects: [
     {
       id: "project-1",
-      title: "Portafolio Web Personal",
-      description:
-        "Desarrollo completo de este portafolio web utilizando Astro, React y TypeScript. Incluye sistema de internacionalización, formularios con validación, integración con Supabase y optimización automática de imágenes.",
+      titleKey: "project.personal-portfolio.title",
+      descriptionKey: "project.personal-portfolio.description",
       technologies: [
         "Astro",
         "React",
@@ -217,27 +216,24 @@ export const portfolioData: PortfolioData = {
     },
     {
       id: "project-2",
-      title: "Sistema de Gestión Académica",
-      description:
-        "Proyecto académico desarrollado con Django para gestión de estudiantes, cursos y calificaciones. Incluye autenticación de usuarios, paneles administrativos y reportes automatizados.",
+      titleKey: "project.academic-management.title",
+      descriptionKey: "project.academic-management.description",
       technologies: ["Python", "Django", "PostgreSQL", "Bootstrap"],
       imageUrl: undefined,
       featured: true,
     },
     {
       id: "project-3",
-      title: "Juego 2D con Unity",
-      description:
-        "Desarrollo de un juego 2D educativo con Unity, incluyendo mecánicas de juego, sistema de puntuación y niveles progresivos. Enfocado en enseñar conceptos de programación de manera interactiva.",
+      titleKey: "project.unity-game.title",
+      descriptionKey: "project.unity-game.description",
       technologies: ["Unity", "C#", "Game Development"],
       imageUrl: undefined,
       featured: true,
     },
     {
       id: "project-4",
-      title: "API REST con Node.js",
-      description:
-        "Desarrollo de una API REST para una aplicación de gestión de tareas. Incluye autenticación JWT, validación de datos, documentación con Swagger y pruebas automatizadas.",
+      titleKey: "project.nodejs-api.title",
+      descriptionKey: "project.nodejs-api.description",
       technologies: ["Node.js", "Express", "MongoDB", "JWT"],
       imageUrl: undefined,
       featured: false,
@@ -247,7 +243,7 @@ export const portfolioData: PortfolioData = {
   socialLinks: [
     {
       platform: "LinkedIn",
-      url: "https://www.linkedin.com/in/raydel-ernesto-reuco-garc%C3%ADa-contact-info",
+      url: "https://www.linkedin.com/in/raydel-ernesto-reuco-garcía-252933364",
       icon: "linkedin",
       label: "Connect on LinkedIn",
     },
@@ -265,7 +261,7 @@ export const portfolioData: PortfolioData = {
     },
     {
       platform: "GitHub",
-      url: "https://github.com/raydel-reuco",
+      url: "https://github.com/YuuNakata",
       icon: "github",
       label: "View GitHub Profile",
     },

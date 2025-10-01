@@ -25,7 +25,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       { href: "#education", label: t("nav.education") },
       { href: "#contact", label: t("nav.contact") },
     ],
-    [t]
+    [t],
   );
 
   React.useEffect(() => {
@@ -252,8 +252,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 {t("footer.rights")}.
               </p>
               <p className="text-gray-500 dark:text-gray-400 text-sm mt-2">
-                {t("footer.built.with")} ❤️ {t("footer.built.with")} Astro +
-                React + Tailwind CSS
+                {t("footer.built.with")} Astro + React + Tailwind CSS
               </p>
             </motion.div>
           </div>

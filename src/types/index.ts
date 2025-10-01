@@ -72,8 +72,8 @@ export interface TechStack {
 
 export interface Project {
   id: string;
-  title: string;
-  description: string;
+  titleKey: string;
+  descriptionKey: string;
   technologies: string[];
   imageUrl?: string;
   liveUrl?: string;

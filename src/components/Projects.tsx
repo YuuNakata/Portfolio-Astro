@@ -37,8 +37,10 @@ const Projects: React.FC = () => {
     return portfolioData.projects.filter((project) => {
       const matchesFilter = filter === "all" || project.featured;
       const matchesSearch =
-        project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        project.description.toLowerCase().includes(searchTerm.toLowerCase());
+        t(project.titleKey).toLowerCase().includes(searchTerm.toLowerCase()) ||
+        t(project.descriptionKey)
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase());
       const matchesTech =
         !selectedTech || project.technologies.includes(selectedTech);
 
@@ -87,7 +89,7 @@ const Projects: React.FC = () => {
                   )}
                   <img
                     src={project.imageUrl}
-                    alt={project.title}
+                    alt={t(project.titleKey)}
                     className={`w-full h-full object-cover transition-all duration-300 ${
                       isHovered ? "scale-105" : "scale-100"
                     } ${imageLoaded ? "opacity-100" : "opacity-0"}`}
@@ -113,7 +115,7 @@ const Projects: React.FC = () => {
             <div className="md:w-2/3 p-6">
               <div className="flex items-start justify-between mb-4">
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                  {project.title}
+                  {t(project.titleKey)}
                 </h3>
                 <div className="flex space-x-2">
                   {project.githubUrl && (
@@ -145,8 +147,8 @@ const Projects: React.FC = () => {
                 </div>
               </div>
 
-              <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
-                {project.description}
+              <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+                {t(project.descriptionKey)}
               </p>
 
               {/* Technologies */}
@@ -194,7 +196,7 @@ const Projects: React.FC = () => {
               )}
               <img
                 src={project.imageUrl}
-                alt={project.title}
+                alt={t(project.titleKey)}
                 className={`w-full h-full object-cover transition-all duration-300 ${
                   isHovered ? "scale-110" : "scale-100"
                 } ${imageLoaded ? "opacity-100" : "opacity-0"}`}
@@ -260,13 +262,13 @@ const Projects: React.FC = () => {
         </div>
 
         {/* Project Content */}
-        <div className="p-6">
-          <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-            {project.title}
+        {/* Project Title */}
+        <div className="p-4">
+          <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+            {t(project.titleKey)}
           </h3>
-
-          <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
-            {project.description}
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-3 line-clamp-2">
+            {t(project.descriptionKey)}
           </p>
 
           {/* Technologies */}
