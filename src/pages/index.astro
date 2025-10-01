@@ -1,7 +1,8 @@
 ---
 import ClientLayout from '../components/ClientLayout';
 import Hero from '../components/Hero';
-import Skills from '../components/Skills';
+import TechStack from '../components/TechStack';
+import InteractiveSkills from '../components/InteractiveSkills';
 import Projects from '../components/Projects';
 import Achievements from '../components/Achievements';
 import Education from '../components/Education';
@@ -275,8 +276,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 			<!-- Hero Section -->
 			<Hero client:load />
 
-			<!-- Skills Section -->
-			<Skills client:load />
+			<!-- Tech Stack Section -->
+			<TechStack client:load />
+
+			<!-- Interactive Skills Demo -->
+			<InteractiveSkills client:load />
 
 			<!-- Projects Section -->
 			<Projects client:load />

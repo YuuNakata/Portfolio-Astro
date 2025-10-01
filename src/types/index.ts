@@ -19,20 +19,55 @@ export interface Education {
   description?: string;
 }
 
-export interface Achievement {
+export interface WhatIBring {
   id: string;
   title: string;
   description: string;
   icon: string;
-  metrics?: string;
+  algorithm: string;
+  tech: string[];
 }
 
-export interface Skill {
+export interface Language {
   id: string;
   name: string;
-  category: 'programming' | 'database' | 'framework' | 'tool' | 'language';
-  level: 'beginner' | 'intermediate' | 'advanced' | 'expert';
-  icon?: string;
+  description: string;
+  icon: string;
+  useCase: string;
+  yearsOfExp: number;
+}
+
+export interface Framework {
+  id: string;
+  name: string;
+  description: string;
+  icon: string;
+  performance: string;
+  bestFor: string;
+}
+
+export interface Tool {
+  id: string;
+  name: string;
+  description: string;
+  icon: string;
+  whyCool: string;
+}
+
+export interface Algorithm {
+  id: string;
+  name: string;
+  description: string;
+  complexity: string;
+  realWorldUse: string;
+  implemented: boolean;
+}
+
+export interface TechStack {
+  languages: Language[];
+  frameworks: Framework[];
+  tools: Tool[];
+  algorithms: Algorithm[];
 }
 
 export interface Project {
@@ -46,6 +81,16 @@ export interface Project {
   featured: boolean;
 }
 
+export interface Service {
+  id: string;
+  title: string;
+  description: string;
+  features: string[];
+  technologies: string[];
+  icon: string;
+  pricing?: string;
+}
+
 export interface ContactMessage {
   id?: string;
   name: string;
@@ -53,11 +98,11 @@ export interface ContactMessage {
   subject: string;
   message: string;
   created_at?: string;
-  status?: 'unread' | 'read' | 'replied';
+  status?: "unread" | "read" | "replied";
 }
 
-export interface Language {
-  code: 'es' | 'en';
+export interface LanguageOption {
+  code: "es" | "en";
   name: string;
   flag: string;
 }
@@ -112,16 +157,17 @@ export interface ThemeState {
 }
 
 export interface LanguageState {
-  currentLanguage: Language['code'];
-  setLanguage: (lang: Language['code']) => void;
+  currentLanguage: LanguageOption["code"];
+  setLanguage: (lang: LanguageOption["code"]) => void;
   t: (key: string) => string;
 }
 
 export interface PortfolioData {
   personalInfo: PersonalInfo;
   education: Education[];
-  achievements: Achievement[];
-  skills: Skill[];
+  whatIBring: WhatIBring[];
+  techStack: TechStack;
   projects: Project[];
+  services?: Service[];
   socialLinks: SocialLink[];
 }

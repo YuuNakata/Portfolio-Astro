@@ -1,6 +1,11 @@
-import { useState, useEffect, useCallback, useMemo } from 'react';
-import type { Language, LanguageState, ThemeState, FormState } from '../types';
-import { translations, languages } from '../data/translations';
+import { useState, useEffect, useCallback, useMemo } from "react";
+import type {
+  LanguageOption,
+  LanguageState,
+  ThemeState,
+  FormState,
+} from "../types";
+import { translations, languageOptions } from "../data/translations";
 
 // Theme Hook
 export function useTheme(): ThemeState {
@@ -8,21 +13,25 @@ export function useTheme(): ThemeState {
 
   useEffect(() => {
     // Check for saved theme preference or default to system preference
-    const savedTheme = localStorage.getItem('portfolio-theme');
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const savedTheme = localStorage.getItem("portfolio-theme");
+    const systemPrefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)",
+    ).matches;
 
-    const shouldUseDark = savedTheme ? savedTheme === 'dark' : systemPrefersDark;
+    const shouldUseDark = savedTheme
+      ? savedTheme === "dark"
+      : systemPrefersDark;
     setIsDark(shouldUseDark);
 
     // Apply theme to document
-    document.documentElement.classList.toggle('dark', shouldUseDark);
+    document.documentElement.classList.toggle("dark", shouldUseDark);
   }, []);
 
   const toggle = useCallback(() => {
-    setIsDark(prev => {
+    setIsDark((prev) => {
       const newTheme = !prev;
-      localStorage.setItem('portfolio-theme', newTheme ? 'dark' : 'light');
-      document.documentElement.classList.toggle('dark', newTheme);
+      localStorage.setItem("portfolio-theme", newTheme ? "dark" : "light");
+      document.documentElement.classList.toggle("dark", newTheme);
       return newTheme;
     });
   }, []);
@@ -32,12 +41,15 @@ export function useTheme(): ThemeState {
 
 // Language Hook
 export function useLanguage(): LanguageState {
-  const [currentLanguage, setCurrentLanguage] = useState<Language['code']>('es');
+  const [currentLanguage, setCurrentLanguage] =
+    useState<LanguageOption["code"]>("es");
 
   useEffect(() => {
     // Check for saved language preference or default to Spanish
-    const savedLanguage = localStorage.getItem('portfolio-language') as Language['code'];
-    const browserLanguage = navigator.language.startsWith('es') ? 'es' : 'en';
+    const savedLanguage = localStorage.getItem(
+      "portfolio-language",
+    ) as LanguageOption["code"];
+    const browserLanguage = navigator.language.startsWith("es") ? "es" : "en";
 
     const initialLanguage = savedLanguage || browserLanguage;
     setCurrentLanguage(initialLanguage);
@@ -46,16 +58,19 @@ export function useLanguage(): LanguageState {
     document.documentElement.lang = initialLanguage;
   }, []);
 
-  const setLanguage = useCallback((lang: Language['code']) => {
+  const setLanguage = useCallback((lang: LanguageOption["code"]) => {
     setCurrentLanguage(lang);
-    localStorage.setItem('portfolio-language', lang);
+    localStorage.setItem("portfolio-language", lang);
     document.documentElement.lang = lang;
   }, []);
 
-  const t = useCallback((key: string): string => {
-    const translation = translations[key];
-    return translation ? translation[currentLanguage] : key;
-  }, [currentLanguage]);
+  const t = useCallback(
+    (key: string): string => {
+      const translation = translations[key];
+      return translation ? translation[currentLanguage] : key;
+    },
+    [currentLanguage],
+  );
 
   return { currentLanguage, setLanguage, t };
 }
@@ -75,24 +90,24 @@ export function useFormState(initialState?: Partial<FormState>): FormState & {
   });
 
   const setIsSubmitting = useCallback((isSubmitting: boolean) => {
-    setFormState(prev => ({ ...prev, isSubmitting, error: undefined }));
+    setFormState((prev) => ({ ...prev, isSubmitting, error: undefined }));
   }, []);
 
   const setIsSuccess = useCallback((isSuccess: boolean) => {
-    setFormState(prev => ({
+    setFormState((prev) => ({
       ...prev,
       isSuccess,
       isSubmitting: false,
-      error: undefined
+      error: undefined,
     }));
   }, []);
 
   const setError = useCallback((error?: string) => {
-    setFormState(prev => ({
+    setFormState((prev) => ({
       ...prev,
       error,
       isSubmitting: false,
-      isSuccess: false
+      isSuccess: false,
     }));
   }, []);
 
@@ -116,7 +131,7 @@ export function useFormState(initialState?: Partial<FormState>): FormState & {
 // Local Storage Hook
 export function useLocalStorage<T>(
   key: string,
-  initialValue: T
+  initialValue: T,
 ): [T, (value: T | ((val: T) => T)) => void] {
   const [storedValue, setStoredValue] = useState<T>(() => {
     try {
@@ -128,23 +143,27 @@ export function useLocalStorage<T>(
     }
   });
 
-  const setValue = useCallback((value: T | ((val: T) => T)) => {
-    try {
-      const valueToStore = value instanceof Function ? value(storedValue) : value;
-      setStoredValue(valueToStore);
-      window.localStorage.setItem(key, JSON.stringify(valueToStore));
-    } catch (error) {
-      console.error(`Error setting localStorage key "${key}":`, error);
-    }
-  }, [key, storedValue]);
+  const setValue = useCallback(
+    (value: T | ((val: T) => T)) => {
+      try {
+        const valueToStore =
+          value instanceof Function ? value(storedValue) : value;
+        setStoredValue(valueToStore);
+        window.localStorage.setItem(key, JSON.stringify(valueToStore));
+      } catch (error) {
+        console.error(`Error setting localStorage key "${key}":`, error);
+      }
+    },
+    [key, storedValue],
+  );
 
   return [storedValue, setValue];
 }
 
 // Intersection Observer Hook for animations
 export function useIntersectionObserver(
-  ref: React.RefObject<Element>,
-  options: IntersectionObserverInit = {}
+  ref: React.RefObject<HTMLElement | null>,
+  options: IntersectionObserverInit = {},
 ) {
   const [isIntersecting, setIsIntersecting] = useState(false);
   const [hasIntersected, setHasIntersected] = useState(false);
@@ -180,9 +199,9 @@ export function useMediaQuery(query: string): boolean {
     }
 
     const listener = () => setMatches(media.matches);
-    media.addEventListener('change', listener);
+    media.addEventListener("change", listener);
 
-    return () => media.removeEventListener('change', listener);
+    return () => media.removeEventListener("change", listener);
   }, [matches, query]);
 
   return matches;
@@ -190,22 +209,25 @@ export function useMediaQuery(query: string): boolean {
 
 // Scroll Direction Hook
 export function useScrollDirection() {
-  const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('up');
+  const [scrollDirection, setScrollDirection] = useState<"up" | "down">("up");
   const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
     const updateScrollDirection = () => {
       const scrollY = window.pageYOffset;
-      const direction = scrollY > lastScrollY ? 'down' : 'up';
+      const direction = scrollY > lastScrollY ? "down" : "up";
 
-      if (direction !== scrollDirection && Math.abs(scrollY - lastScrollY) > 10) {
+      if (
+        direction !== scrollDirection &&
+        Math.abs(scrollY - lastScrollY) > 10
+      ) {
         setScrollDirection(direction);
       }
       setLastScrollY(scrollY > 0 ? scrollY : 0);
     };
 
-    window.addEventListener('scroll', updateScrollDirection);
-    return () => window.removeEventListener('scroll', updateScrollDirection);
+    window.addEventListener("scroll", updateScrollDirection);
+    return () => window.removeEventListener("scroll", updateScrollDirection);
   }, [scrollDirection, lastScrollY]);
 
   return scrollDirection;
@@ -230,7 +252,7 @@ export function useDebounce<T>(value: T, delay: number): T {
 
 // Available Languages Hook
 export function useLanguages() {
-  return useMemo(() => languages, []);
+  return useMemo(() => languageOptions, []);
 }
 
 // Keyboard Navigation Hook
@@ -238,17 +260,19 @@ export function useKeyboardNavigation(callback: (key: string) => void) {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       // Handle escape key for modals
-      if (event.key === 'Escape') {
-        callback('Escape');
+      if (event.key === "Escape") {
+        callback("Escape");
       }
       // Handle arrow keys for navigation
-      if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) {
+      if (
+        ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(event.key)
+      ) {
         callback(event.key);
       }
     };
 
-    document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
   }, [callback]);
 }
 
@@ -263,7 +287,7 @@ export function useCopyToClipboard() {
       setTimeout(() => setIsCopied(false), 2000);
       return true;
     } catch (error) {
-      console.error('Failed to copy to clipboard:', error);
+      console.error("Failed to copy to clipboard:", error);
       return false;
     }
   }, []);

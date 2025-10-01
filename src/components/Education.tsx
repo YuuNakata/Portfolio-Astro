@@ -268,13 +268,13 @@ const Education: React.FC = () => {
                       Progress
                     </span>
                     <span className="text-sm text-green-600 dark:text-green-400">
-                      60%
+                      75%
                     </span>
                   </div>
                   <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                     <motion.div
                       initial={{ width: 0 }}
-                      animate={hasIntersected ? { width: "60%" } : { width: 0 }}
+                      animate={hasIntersected ? { width: "75%" } : { width: 0 }}
                       transition={{ duration: 1.5, delay: index * 0.3 + 1 }}
                       className="bg-gradient-to-r from-green-500 to-blue-500 h-2 rounded-full"
                     />
@@ -419,7 +419,7 @@ const Education: React.FC = () => {
               <div className="flex items-center justify-center mb-2">
                 <TrendingUp className="w-6 h-6 text-green-600 dark:text-green-400 mr-2" />
                 <span className="text-3xl font-bold text-green-600 dark:text-green-400">
-                  60%
+                  75%
                 </span>
               </div>
               <p className="text-gray-600 dark:text-gray-400 text-sm">

@@ -7,24 +7,20 @@ import {
   useState,
 } from "react";
 import { translations } from "../data/translations";
-import type { Language, LanguageState } from "../types";
-
-interface LanguageContextType extends LanguageState {
-  children?: ReactNode;
-}
+import type { LanguageOption, LanguageState } from "../types";
 
 const LanguageContext = createContext<LanguageState | undefined>(undefined);
 
 // Custom hook for language management that works across islands
 export function useLanguageStorage() {
   const [currentLanguage, setCurrentLanguageState] =
-    useState<Language["code"]>("es");
+    useState<LanguageOption["code"]>("es");
 
   useEffect(() => {
     // Check for saved language preference or default to Spanish
     const savedLanguage = localStorage.getItem(
-      "portfolio-language"
-    ) as Language["code"];
+      "portfolio-language",
+    ) as LanguageOption["code"];
     const browserLanguage = navigator.language.startsWith("es") ? "es" : "en";
     const initialLanguage = savedLanguage || browserLanguage;
 
@@ -34,13 +30,13 @@ export function useLanguageStorage() {
     // Listen for storage changes
     const handleStorageChange = (e: StorageEvent) => {
       if (e.key === "portfolio-language" && e.newValue) {
-        setCurrentLanguageState(e.newValue as Language["code"]);
+        setCurrentLanguageState(e.newValue as LanguageOption["code"]);
         document.documentElement.lang = e.newValue;
       }
     };
 
     // Listen for custom language change events
-    const handleLanguageChange = (e: CustomEvent<Language["code"]>) => {
+    const handleLanguageChange = (e: CustomEvent<LanguageOption["code"]>) => {
       setCurrentLanguageState(e.detail);
       document.documentElement.lang = e.detail;
     };
@@ -48,19 +44,19 @@ export function useLanguageStorage() {
     window.addEventListener("storage", handleStorageChange);
     window.addEventListener(
       "languageChange",
-      handleLanguageChange as EventListener
+      handleLanguageChange as EventListener,
     );
 
     return () => {
       window.removeEventListener("storage", handleStorageChange);
       window.removeEventListener(
         "languageChange",
-        handleLanguageChange as EventListener
+        handleLanguageChange as EventListener,
       );
     };
   }, []);
 
-  const setLanguage = useCallback((lang: Language["code"]) => {
+  const setLanguage = useCallback((lang: LanguageOption["code"]) => {
     setCurrentLanguageState(lang);
     localStorage.setItem("portfolio-language", lang);
     document.documentElement.lang = lang;
@@ -74,7 +70,7 @@ export function useLanguageStorage() {
       const translation = translations[key];
       return translation ? translation[currentLanguage] : key;
     },
-    [currentLanguage]
+    [currentLanguage],
   );
 
   return {

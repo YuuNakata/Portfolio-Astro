@@ -11,16 +11,16 @@ export const translations: Translation = {
     en: "About",
   },
   "nav.skills": {
-    es: "Habilidades",
-    en: "Skills",
+    es: "Stack Técnico",
+    en: "Tech Stack",
   },
   "nav.projects": {
     es: "Proyectos",
     en: "Projects",
   },
   "nav.achievements": {
-    es: "Logros",
-    en: "Achievements",
+    es: "Lo que Aporto",
+    en: "What I Bring",
   },
   "nav.education": {
     es: "Educación",
@@ -37,12 +37,12 @@ export const translations: Translation = {
     en: "Hello, I'm",
   },
   "hero.title": {
-    es: "Desarrollador Full Stack",
+    es: "Full Stack Developer",
     en: "Full Stack Developer",
   },
   "hero.subtitle": {
-    es: "Estudiante de Ingeniería Informática",
-    en: "Computer Engineering Student",
+    es: "CS Student • Problem Solver • Code Craftsman",
+    en: "CS Student • Problem Solver • Code Craftsman",
   },
   "hero.cta.contact": {
     es: "Contáctame",
@@ -79,38 +79,134 @@ export const translations: Translation = {
     en: "Projects",
   },
 
-  // Skills Section
-  "skills.title": {
-    es: "Habilidades Técnicas",
-    en: "Technical Skills",
+  // Tech Stack Section
+  "techstack.title": {
+    es: "Stack Técnico",
+    en: "Tech Stack",
   },
-  "skills.description": {
-    es: "Explora mis habilidades técnicas y nivel de competencia en diferentes tecnologías.",
-    en: "Explore my technical expertise and proficiency levels across different technologies and tools.",
+  "techstack.description": {
+    es: "Las herramientas y tecnologías que uso para construir experiencias digitales que funcionan.",
+    en: "The tools and technologies I use to build digital experiences that actually work.",
   },
-  "skills.total": {
-    es: "Total de Habilidades",
-    en: "Total Skills",
+  "techstack.languages": {
+    es: "Lenguajes",
+    en: "Languages",
   },
-  "skills.categories": {
-    es: "Categorías",
-    en: "Categories",
+  "techstack.frameworks": {
+    es: "Frameworks",
+    en: "Frameworks",
   },
-  "skills.advanced": {
-    es: "Avanzado+",
-    en: "Advanced+",
+  "techstack.tools": {
+    es: "Herramientas",
+    en: "Tools",
   },
-  "skills.cta.title": {
-    es: "¿Listo para trabajar juntos?",
-    en: "Ready to work together?",
+  "techstack.algorithms": {
+    es: "Algoritmos",
+    en: "Algorithms",
   },
-  "skills.cta.description": {
-    es: "Siempre estoy emocionado de asumir nuevos desafíos y colaborar en proyectos innovadores.",
-    en: "I'm always excited to take on new challenges and collaborate on innovative projects.",
+  "techstack.cta.title": {
+    es: "¿Construimos algo genial?",
+    en: "Let's Build Something Cool?",
   },
-  "skills.cta.button": {
-    es: "Contáctame",
-    en: "Get In Touch",
+  "techstack.cta.description": {
+    es: "Tengo las herramientas, tienes la visión. Hagamos que suceda.",
+    en: "I have the tools, you have the vision. Let's make it happen.",
+  },
+  "techstack.cta.button": {
+    es: "Conversemos",
+    en: "Let's Talk",
+  },
+  "techstack.performance": {
+    es: "Rendimiento",
+    en: "Performance",
+  },
+  "techstack.bestfor": {
+    es: "Mejor para",
+    en: "Best for",
+  },
+  "techstack.whycool": {
+    es: "Por qué es genial",
+    en: "Why it's cool",
+  },
+  "techstack.usecase": {
+    es: "Caso de uso",
+    en: "Use case",
+  },
+  "techstack.years": {
+    es: "años",
+    en: "years",
+  },
+  "techstack.complexity": {
+    es: "Complejidad",
+    en: "Complexity",
+  },
+  "techstack.realworld": {
+    es: "Uso en el mundo real",
+    en: "Real-world use",
+  },
+  "techstack.implemented": {
+    es: "Implementado",
+    en: "Implemented",
+  },
+  "techstack.fundamentals": {
+    es: "Fundamentos de Ciencias de la Computación",
+    en: "Computer Science Fundamentals",
+  },
+  "techstack.algorithms.description": {
+    es: "Estos no son solo ejercicios académicos—he implementado estos algoritmos y entiendo cuándo y por qué usarlos en aplicaciones reales.",
+    en: "These aren't just academic exercises—I've implemented these algorithms and understand when and why to use them in real applications.",
+  },
+
+  // What I Bring Section - Value Propositions
+  "whatibring.value-1.title": {
+    es: "Despliegues Sin Tiempo de Inactividad",
+    en: "Zero-Downtime Deployments",
+  },
+  "whatibring.value-1.description": {
+    es: "Tus usuarios ni siquiera notarán cuando desplegemos actualizaciones. Pipelines de CI/CD automatizados que simplemente funcionan.",
+    en: "Your users won't even notice when we ship updates. Automated CI/CD pipelines that just work.",
+  },
+  "whatibring.value-2.title": {
+    es: "Rendimiento que Importa",
+    en: "Performance That Matters",
+  },
+  "whatibring.value-2.description": {
+    es: "Tiempos de carga subsegundo no son magia—son ingeniería. Puntuaciones de Lighthouse que ponen celosos a los competidores.",
+    en: "Sub-second load times aren't magic—they're engineering. Lighthouse scores that make competitors jealous.",
+  },
+  "whatibring.value-3.title": {
+    es: "Arquitectura de Datos que Escala",
+    en: "Data Architecture That Scales",
+  },
+  "whatibring.value-3.description": {
+    es: "Desde MVP de startup hasta escala empresarial. Diseños de base de datos que crecen con tus ambiciones, no en contra de ellas.",
+    en: "From startup MVP to enterprise scale. Database designs that grow with your ambitions, not against them.",
+  },
+  "whatibring.value-4.title": {
+    es: "Código que No se Rompe",
+    en: "Code That Doesn't Break",
+  },
+  "whatibring.value-4.description": {
+    es: "TypeScript a prueba de balas, testing exhaustivo, y documentación que el tú del futuro le agradecerá al tú del presente.",
+    en: "Bulletproof TypeScript, comprehensive testing, and documentation that future-you will thank present-you for.",
+  },
+
+  // Algorithm and Technical Terms
+  "algorithm.blue-green": {
+    es: "Despliegue Azul-Verde",
+    en: "Blue-Green Deployment",
+  },
+  "algorithm.critical-path": {
+    es: "Optimización de Ruta Crítica",
+    en: "Critical Path Optimization",
+  },
+  "algorithm.normalized-indexing": {
+    es: "Indexación Normalizada",
+    en: "Normalized Indexing",
+  },
+  "algorithm.tdd": {
+    es: "Metodología TDD",
+    en: "TDD Methodology",
   },
   "skills.category.programming": {
     es: "Programación",
@@ -183,10 +279,14 @@ export const translations: Translation = {
     en: "Search projects...",
   },
 
-  // Achievements Section
-  "achievements.title": {
-    es: "Logros Clave",
-    en: "Key Achievements",
+  // What I Bring Section
+  "whatibring.title": {
+    es: "Lo que Aporto",
+    en: "What I Bring",
+  },
+  "whatibring.description": {
+    es: "Valor real que puedes esperar cuando trabajamos juntos.",
+    en: "Real value you can expect when we work together.",
   },
   "achievements.metric.users": {
     es: "usuarios diarios",
@@ -204,17 +304,17 @@ export const translations: Translation = {
     es: "reducción de riesgo",
     en: "risk reduction",
   },
-  "achievements.cta.title": {
-    es: "¿Listo para lograr más juntos?",
-    en: "Ready to achieve more together?",
+  "whatibring.cta.title": {
+    es: "¿Listo para ver resultados?",
+    en: "Ready to See Results?",
   },
-  "achievements.cta.description": {
-    es: "Colaboremos para crear soluciones impactantes y alcanzar nuevos hitos en tu próximo proyecto.",
-    en: "Let's collaborate to create impactful solutions and reach new milestones in your next project.",
+  "whatibring.cta.description": {
+    es: "Menos conversación, más acción. Construyamos algo que importe.",
+    en: "Less talk, more action. Let's build something that matters.",
   },
-  "achievements.cta.button": {
-    es: "Iniciar un Proyecto",
-    en: "Start a Project",
+  "whatibring.cta.button": {
+    es: "Empecemos",
+    en: "Let's Start",
   },
 
   // Education Section
@@ -319,8 +419,8 @@ export const translations: Translation = {
 
   // Personal Info
   "personalInfo.summary": {
-    es: "Posee una sólida base en ingeniería informática y programación, con pasión por utilizar la tecnología para mejorar las experiencias de usuario y resolver problemas complejos. Muestra entusiasmo por contribuir a un equipo enfocado en el desarrollo de software de vanguardia, junto con un compromiso con el aprendizaje continuo y la excelencia tecnológica. Las habilidades en varios lenguajes de programación y gestión de bases de datos lo posicionan bien para contribuciones impactantes en un entorno dinámico.",
-    en: "Strong foundation in computer engineering and programming is held, with a passion for using technology to enhance user experiences and solve complex problems. Eagerness to contribute to a team focused on cutting edge software development is evident, along with commitment to continuous learning and technological excellence. Skills in various programming languages and database management position well for impactful contributions in a dynamic environment.",
+    es: "Estudiante de Ingeniería Informática especializado en desarrollo full-stack con enfoque en aplicaciones web escalables y optimización de bases de datos. Comprometido con entregar soluciones eficientes y centradas en el usuario mediante tecnologías modernas y mejores prácticas.",
+    en: "Computer Science student specializing in full-stack development with focus on scalable web applications and database optimization. Committed to delivering efficient, user-centered solutions through modern technologies and best practices.",
   },
 
   // Education
@@ -329,10 +429,22 @@ export const translations: Translation = {
     en: "Currently pursuing a degree in Computer Engineering with focus on software development, database management, and modern programming practices.",
   },
 
-  // Achievements
-  "achievements.description": {
-    es: "Logros significativos y hitos que muestran mi impacto y experiencia en el desarrollo de software.",
-    en: "Significant milestones and accomplishments that showcase my impact and expertise in software development.",
+  // What I Bring
+  "whatibring.algorithm": {
+    es: "Algoritmo",
+    en: "Algorithm",
+  },
+  "whatibring.tech": {
+    es: "Tecnologías",
+    en: "Technologies",
+  },
+  "whatibring.complexity": {
+    es: "Complejidad",
+    en: "Complexity",
+  },
+  "whatibring.usecase": {
+    es: "Caso de uso",
+    en: "Use case",
   },
 
   // Achievement Descriptions
@@ -473,7 +585,7 @@ export const translations: Translation = {
   },
 };
 
-export const languages = [
+export const languageOptions = [
   {
     code: "es" as const,
     name: "Español",

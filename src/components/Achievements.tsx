@@ -1,25 +1,21 @@
-import { easeInOut, easeOut, motion } from "framer-motion";
+import { motion, easeOut } from "framer-motion";
 import {
-  Award,
   Database,
-  Download,
-  Gamepad2,
-  Globe,
-  ShieldCheck,
-  Star,
-  Target,
-  TrendingUp,
-  Trophy,
-  Users,
+  Rocket,
+  Shield,
   Zap,
+  Code,
+  ChevronRight,
+  TrendingUp,
+  Clock,
 } from "lucide-react";
 import React from "react";
 import { useLanguage } from "../contexts/LanguageContext";
 import { portfolioData } from "../data/portfolio";
 import { useIntersectionObserver } from "../lib/hooks";
 
-interface AchievementCardProps {
-  achievement: (typeof portfolioData.achievements)[0];
+interface WhatIBringCardProps {
+  item: (typeof portfolioData.whatIBring)[0];
   index: number;
 }
 
@@ -30,224 +26,110 @@ const Achievements: React.FC = () => {
     threshold: 0.1,
   });
 
-  const getAchievementIcon = (iconName: string) => {
-    const iconProps = { className: "w-8 h-8" };
-
+  const getIcon = (iconName: string) => {
     switch (iconName) {
-      case "globe":
-        return <Globe {...iconProps} />;
+      case "rocket":
+        return <Rocket className="w-6 h-6" />;
+      case "zap":
+        return <Zap className="w-6 h-6" />;
       case "database":
-        return <Database {...iconProps} />;
-      case "gamepad-2":
-        return <Gamepad2 {...iconProps} />;
-      case "shield-check":
-        return <ShieldCheck {...iconProps} />;
+        return <Database className="w-6 h-6" />;
+      case "shield":
+        return <Shield className="w-6 h-6" />;
       default:
-        return <Trophy {...iconProps} />;
+        return <Code className="w-6 h-6" />;
     }
   };
 
-  const getGradientClass = (index: number) => {
-    const gradients = [
-      "from-blue-500 to-cyan-500",
-      "from-purple-500 to-pink-500",
-      "from-green-500 to-emerald-500",
-      "from-orange-500 to-red-500",
-    ];
-    return gradients[index % gradients.length];
+  const getIconColor = (iconName: string) => {
+    switch (iconName) {
+      case "rocket":
+        return "from-blue-500 to-indigo-600";
+      case "zap":
+        return "from-yellow-500 to-orange-600";
+      case "database":
+        return "from-green-500 to-emerald-600";
+      case "shield":
+        return "from-purple-500 to-violet-600";
+      default:
+        return "from-gray-500 to-gray-600";
+    }
   };
 
-  const AchievementCard: React.FC<AchievementCardProps> = ({
-    achievement,
-    index,
-  }) => {
-    const [isHovered, setIsHovered] = React.useState(false);
-    const gradientClass = getGradientClass(index);
-
-    const cardVariants = {
-      hidden: {
-        opacity: 0,
-        y: 50,
-        scale: 0.9,
-      },
-      visible: {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        transition: {
-          duration: 0.6,
-          delay: index * 0.2,
-          ease: easeOut,
-        },
-      },
-    };
-
-    const iconVariants = {
-      initial: { rotate: 0, scale: 1 },
-      hover: {
-        rotate: 360,
-        scale: 1.1,
-        transition: {
-          duration: 0.6,
-          ease: easeInOut,
-        },
-      },
-    };
-
-    const backgroundVariants = {
-      initial: { scale: 1, opacity: 0.1 },
-      hover: {
-        scale: 1.05,
-        opacity: 0.2,
-        transition: {
-          duration: 0.3,
-          ease: easeOut,
-        },
-      },
-    };
+  const WhatIBringCard: React.FC<WhatIBringCardProps> = ({ item, index }) => {
+    const iconColor = getIconColor(item.icon);
 
     return (
       <motion.div
-        variants={cardVariants}
-        initial="hidden"
-        animate={hasIntersected ? "visible" : "hidden"}
-        whileHover={{
-          y: -8,
-          transition: { duration: 0.2 },
+        initial={{ opacity: 0, y: 30 }}
+        animate={hasIntersected ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+        transition={{
+          duration: 0.6,
+          delay: index * 0.15,
+          ease: "easeOut",
         }}
-        className="group relative"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+        whileHover={{
+          scale: 1.02,
+          y: -8,
+        }}
+        className="group bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 dark:border-gray-700 overflow-hidden relative"
       >
-        {/* Background Card */}
-        <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-200 dark:border-gray-700 overflow-hidden">
-          {/* Background Gradient */}
-          <motion.div
-            variants={backgroundVariants}
-            initial="initial"
-            animate={isHovered ? "hover" : "initial"}
-            className={`absolute inset-0 bg-gradient-to-br ${gradientClass} opacity-5 rounded-2xl`}
-          />
-
-          {/* Decorative Elements */}
-          <div className="absolute top-4 right-4 opacity-10">
-            <motion.div
-              animate={{
-                rotate: [0, 360],
-                scale: [1, 1.1, 1],
-              }}
-              transition={{
-                duration: 10,
-                repeat: Infinity,
-                ease: "linear",
-              }}
+        {/* Header */}
+        <div className="p-6 pb-4">
+          <div className="flex items-start justify-between mb-4">
+            <div
+              className={`p-3 rounded-xl bg-gradient-to-r ${iconColor} text-white group-hover:scale-110 transition-transform duration-300`}
             >
-              <Star className="w-16 h-16 text-gray-400" />
-            </motion.div>
+              {getIcon(item.icon)}
+            </div>
+            <div className="text-xs px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-gray-600 dark:text-gray-300 font-mono">
+              {t(item.algorithm)}
+            </div>
           </div>
 
-          <div className="relative z-10">
-            {/* Icon */}
-            <motion.div
-              variants={iconVariants}
-              initial="initial"
-              animate={isHovered ? "hover" : "initial"}
-              className={`inline-flex items-center justify-center p-4 bg-gradient-to-br ${gradientClass} rounded-2xl text-white mb-6 shadow-lg`}
-            >
-              {getAchievementIcon(achievement.icon)}
-            </motion.div>
+          <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-blue-600 group-hover:to-purple-600 transition-all duration-300">
+            {t(item.title)}
+          </h3>
 
-            {/* Achievement Title */}
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 transition-all duration-300">
-              {achievement.title}
-            </h3>
+          <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+            {t(item.description)}
+          </p>
+        </div>
 
-            {/* Achievement Description */}
-            <p
-              className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed"
-              suppressHydrationWarning
-            >
-              {t(`achievements.${achievement.id}.description`) ||
-                achievement.description}
-            </p>
-
-            {/* Metrics */}
-            {achievement.metrics && (
-              <div className="flex items-center justify-between">
-                <div
-                  className={`px-4 py-2 bg-gradient-to-r ${gradientClass} text-white rounded-full font-semibold text-lg shadow-md`}
-                >
-                  {achievement.metrics}
-                </div>
-
-                {/* Animated Progress Indicator */}
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={hasIntersected ? { scale: 1 } : { scale: 0 }}
-                  transition={{ delay: index * 0.2 + 0.5, duration: 0.3 }}
-                  className="flex items-center space-x-1"
-                >
-                  {[...Array(5)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, scale: 0 }}
-                      animate={
-                        hasIntersected
-                          ? {
-                              opacity: i < 4 ? 1 : 0.3,
-                              scale: 1,
-                            }
-                          : {
-                              opacity: 0,
-                              scale: 0,
-                            }
-                      }
-                      transition={{
-                        delay: index * 0.2 + 0.7 + i * 0.1,
-                        duration: 0.2,
-                      }}
-                      className={`w-2 h-2 rounded-full bg-gradient-to-r ${gradientClass}`}
-                    />
-                  ))}
-                </motion.div>
-              </div>
-            )}
-
-            {/* Hover Effect Indicator */}
-            <motion.div
-              initial={{ scaleX: 0 }}
-              animate={isHovered ? { scaleX: 1 } : { scaleX: 0 }}
-              transition={{ duration: 0.3 }}
-              className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${gradientClass} rounded-full origin-left`}
-            />
+        {/* Tech Stack */}
+        <div className="px-6 pb-6">
+          <div className="flex items-center mb-3">
+            <Code className="w-4 h-4 text-gray-500 mr-2" />
+            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+              {t("whatibring.tech")}
+            </span>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {item.tech.map((tech, techIndex) => (
+              <motion.span
+                key={techIndex}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={
+                  hasIntersected
+                    ? { opacity: 1, scale: 1 }
+                    : { opacity: 0, scale: 0.8 }
+                }
+                transition={{
+                  duration: 0.3,
+                  delay: index * 0.1 + techIndex * 0.05,
+                }}
+                className="px-3 py-1 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 rounded-lg text-sm text-gray-700 dark:text-gray-300 font-medium hover:from-blue-100 hover:to-purple-100 dark:hover:from-blue-900/30 dark:hover:to-purple-900/30 transition-all duration-200"
+              >
+                {tech}
+              </motion.span>
+            ))}
           </div>
         </div>
 
-        {/* Floating Icon Effect */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0, x: 0, y: 0 }}
-          animate={
-            isHovered
-              ? {
-                  opacity: 0.2,
-                  scale: 2,
-                  x: 20,
-                  y: -20,
-                  rotate: 45,
-                }
-              : {
-                  opacity: 0,
-                  scale: 0,
-                  x: 0,
-                  y: 0,
-                  rotate: 0,
-                }
-          }
-          transition={{ duration: 0.3 }}
-          className="absolute top-4 left-4 pointer-events-none"
-        >
-          {getAchievementIcon(achievement.icon)}
-        </motion.div>
+        {/* Hover Effect Arrow */}
+        <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-blue-500 transition-colors duration-300" />
+        </div>
       </motion.div>
     );
   };
@@ -257,13 +139,13 @@ const Achievements: React.FC = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.1,
       },
     },
   };
 
-  const statVariants = {
-    hidden: { opacity: 0, y: 20 },
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
@@ -285,53 +167,27 @@ const Achievements: React.FC = () => {
         <motion.div
           animate={{
             rotate: [0, 360],
-            scale: [1, 1.1, 1],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-          className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-yellow-400/10 to-orange-500/10 rounded-full filter blur-3xl"
-        />
-        <motion.div
-          animate={{
-            rotate: [360, 0],
-            scale: [1.1, 1, 1.1],
+            scale: [1, 1.2, 1],
           }}
           transition={{
             duration: 25,
             repeat: Infinity,
             ease: "linear",
           }}
-          className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-blue-400/10 to-purple-600/10 rounded-full filter blur-3xl"
+          className="absolute -top-20 -right-20 w-60 h-60 bg-blue-500/5 rounded-full filter blur-xl"
         />
-
-        {/* Floating Achievement Icons */}
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={i}
-            animate={{
-              y: [0, -20, 0],
-              x: [0, 10, 0],
-              rotate: [0, 180, 360],
-              opacity: [0.1, 0.2, 0.1],
-            }}
-            transition={{
-              duration: 8 + i * 2,
-              repeat: Infinity,
-              delay: i * 1.5,
-              ease: easeInOut,
-            }}
-            className="absolute text-blue-500/20"
-            style={{
-              left: `${10 + i * 15}%`,
-              top: `${20 + i * 10}%`,
-            }}
-          >
-            <Trophy className="w-8 h-8" />
-          </motion.div>
-        ))}
+        <motion.div
+          animate={{
+            rotate: [360, 0],
+            scale: [1.2, 1, 1.2],
+          }}
+          transition={{
+            duration: 30,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          className="absolute -bottom-32 -left-32 w-80 h-80 bg-purple-500/5 rounded-full filter blur-xl"
+        />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -346,95 +202,59 @@ const Achievements: React.FC = () => {
         >
           <motion.div
             whileHover={{ scale: 1.05, rotate: 5 }}
-            className="inline-flex items-center justify-center p-3 bg-gradient-to-r from-yellow-500 to-orange-600 rounded-full mb-6"
+            className="inline-flex items-center justify-center p-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl mb-6 shadow-lg"
           >
-            <Award className="w-8 h-8 text-white" />
+            <TrendingUp className="w-8 h-8 text-white" />
           </motion.div>
 
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            {t("achievements.title")}
+            {t("whatibring.title")}
           </h2>
 
-          <p
-            className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-8"
-            suppressHydrationWarning
-          >
-            {t("achievements.description") ||
-              "Significant milestones and accomplishments that showcase my impact and expertise in software development."}
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
+            {t("whatibring.description")}
           </p>
 
-          {/* Achievement Stats */}
+          {/* Stats */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate={hasIntersected ? "visible" : "hidden"}
-            className="flex flex-wrap justify-center gap-8 mt-12"
+            className="flex justify-center items-center space-x-8 mt-8"
           >
-            <motion.div variants={statVariants} className="text-center">
-              <div className="flex items-center justify-center mb-2">
-                <Users className="w-6 h-6 text-blue-600 dark:text-blue-400 mr-2" />
-                <span className="text-3xl font-bold text-blue-600 dark:text-blue-400">
-                  500+
-                </span>
+            <motion.div variants={itemVariants} className="text-center">
+              <div className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                {portfolioData.whatIBring.length}
               </div>
-              <p className="text-gray-600 dark:text-gray-400 text-sm">
-                Daily Users Reached
-              </p>
+              <div className="text-gray-600 dark:text-gray-400 text-sm">
+                Value Props
+              </div>
             </motion.div>
-
-            <motion.div variants={statVariants} className="text-center">
-              <div className="flex items-center justify-center mb-2">
-                <TrendingUp className="w-6 h-6 text-green-600 dark:text-green-400 mr-2" />
-                <span className="text-3xl font-bold text-green-600 dark:text-green-400">
-                  30%
-                </span>
+            <motion.div variants={itemVariants} className="text-center">
+              <div className="text-3xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+                100%
               </div>
-              <p className="text-gray-600 dark:text-gray-400 text-sm">
-                Performance Improvement
-              </p>
+              <div className="text-gray-600 dark:text-gray-400 text-sm">
+                Results Focused
+              </div>
             </motion.div>
-
-            <motion.div variants={statVariants} className="text-center">
-              <div className="flex items-center justify-center mb-2">
-                <Download className="w-6 h-6 text-purple-600 dark:text-purple-400 mr-2" />
-                <span className="text-3xl font-bold text-purple-600 dark:text-purple-400">
-                  1K+
-                </span>
+            <motion.div variants={itemVariants} className="text-center">
+              <div className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                <Clock className="w-8 h-8 mx-auto" />
               </div>
-              <p className="text-gray-600 dark:text-gray-400 text-sm">
-                Game Downloads
-              </p>
-            </motion.div>
-
-            <motion.div variants={statVariants} className="text-center">
-              <div className="flex items-center justify-center mb-2">
-                <ShieldCheck className="w-6 h-6 text-orange-600 dark:text-orange-400 mr-2" />
-                <span className="text-3xl font-bold text-orange-600 dark:text-orange-400">
-                  90%
-                </span>
+              <div className="text-gray-600 dark:text-gray-400 text-sm">
+                Always Shipped
               </div>
-              <p className="text-gray-600 dark:text-gray-400 text-sm">
-                Risk Reduction
-              </p>
             </motion.div>
           </motion.div>
         </motion.div>
 
-        {/* Achievement Cards */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={hasIntersected ? "visible" : "hidden"}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16"
-        >
-          {portfolioData.achievements.map((achievement, index) => (
-            <AchievementCard
-              key={achievement.id}
-              achievement={achievement}
-              index={index}
-            />
+        {/* What I Bring Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+          {portfolioData.whatIBring.map((item, index) => (
+            <WhatIBringCard key={item.id} item={item} index={index} />
           ))}
-        </motion.div>
+        </div>
 
         {/* Call to Action */}
         <motion.div
@@ -442,53 +262,23 @@ const Achievements: React.FC = () => {
           animate={
             hasIntersected ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
           }
-          transition={{ duration: 0.8, delay: 0.8 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
           className="text-center"
         >
-          <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-green-600 rounded-2xl p-8 text-white relative overflow-hidden">
-            {/* Background Pattern */}
-            <div className="absolute inset-0 opacity-10">
-              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-20" />
-            </div>
+          <div className="bg-gradient-to-r from-gray-900 to-gray-800 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-8 text-white relative overflow-hidden">
+            {/* Background pattern */}
+            <div className="absolute inset-0 bg-grid-white/5 bg-[size:20px_20px]" />
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20" />
 
             <div className="relative z-10">
-              <motion.div
-                animate={{
-                  scale: [1, 1.05, 1],
-                  rotate: [0, 5, -5, 0],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: easeInOut,
-                }}
-                className="inline-block mb-4"
-              >
-                <Target className="w-12 h-12 mx-auto" />
-              </motion.div>
-
-              <h3
-                className="text-2xl md:text-3xl font-bold mb-4"
-                suppressHydrationWarning
-              >
-                {t("achievements.cta.title") ||
-                  "Ready to achieve more together?"}
+              <h3 className="text-2xl md:text-3xl font-bold mb-4">
+                {t("whatibring.cta.title")}
               </h3>
-
-              <p
-                className="text-blue-100 mb-6 max-w-2xl mx-auto text-lg"
-                suppressHydrationWarning
-              >
-                {t("achievements.cta.description") ||
-                  "Let's collaborate to create impactful solutions and reach new milestones in your next project."}
+              <p className="text-gray-300 mb-8 max-w-2xl mx-auto text-lg">
+                {t("whatibring.cta.description")}
               </p>
-
               <motion.button
-                whileHover={{
-                  scale: 1.05,
-                  y: -2,
-                  boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.3)",
-                }}
+                whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => {
                   const contactSection = document.querySelector("#contact");
@@ -496,12 +286,10 @@ const Achievements: React.FC = () => {
                     contactSection.scrollIntoView({ behavior: "smooth" });
                   }
                 }}
-                className="px-8 py-4 bg-white text-gray-900 font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2 mx-auto"
+                className="px-8 py-4 bg-white text-gray-900 font-bold rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 inline-flex items-center space-x-2"
               >
-                <Zap className="w-5 h-5" />
-                <span suppressHydrationWarning>
-                  {t("achievements.cta.button") || "Start a Project"}
-                </span>
+                <span>{t("whatibring.cta.button")}</span>
+                <ChevronRight className="w-5 h-5" />
               </motion.button>
             </div>
           </div>
