@@ -19,7 +19,6 @@ import { useIntersectionObserver } from "../lib/hooks";
 interface EducationItemProps {
   education: (typeof portfolioData.education)[0];
   index: number;
-  isLast: boolean;
 }
 
 const Education: React.FC = () => {
@@ -443,12 +442,7 @@ const Education: React.FC = () => {
         {/* Education Timeline */}
         <div className="relative max-w-4xl mx-auto">
           {portfolioData.education.map((edu, index) => (
-            <EducationItem
-              key={edu.id}
-              education={edu}
-              index={index}
-              isLast={index === portfolioData.education.length - 1}
-            />
+            <EducationItem key={edu.id} education={edu} index={index} />
           ))}
         </div>
 

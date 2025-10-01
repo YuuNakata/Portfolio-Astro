@@ -15,7 +15,6 @@ import {
   MessageSquare,
   Phone,
   Send,
-  User,
   Zap,
 } from "lucide-react";
 import React, { useState } from "react";

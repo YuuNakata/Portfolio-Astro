@@ -65,7 +65,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		<link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
 
 		<!-- JSON-LD Structured Data -->
-		<script type="application/ld+json">
+		<script type="application/ld+json" is:inline>
 		{
 			"@context": "https://schema.org",
 			"@type": "Person",
@@ -321,8 +321,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 			// }
 
 			// Analytics tracking (if Google Analytics is configured)
-			if (typeof gtag !== 'undefined') {
-				gtag('config', 'GA_MEASUREMENT_ID', {
+			if (typeof (window as any).gtag !== 'undefined') {
+				(window as any).gtag('config', 'GA_MEASUREMENT_ID', {
 					page_title: document.title,
 					page_location: window.location.href,
 				});
@@ -336,7 +336,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 							console.log('LCP:', entry.startTime);
 						}
 						if (entry.entryType === 'first-input') {
-							console.log('FID:', entry.processingStart - entry.startTime);
+							console.log('FID:', (entry as any).processingStart - entry.startTime);
 						}
 					});
 				});
