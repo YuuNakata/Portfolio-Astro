@@ -255,7 +255,7 @@ export const portfolioData: PortfolioData = {
     },
     {
       platform: "Phone",
-      url: "tel:+535571136",
+      url: "tel:+5355791136",
       icon: "phone",
       label: "Call Me",
     },
