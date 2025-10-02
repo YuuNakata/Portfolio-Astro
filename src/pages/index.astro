@@ -1,355 +1,430 @@
 ---
-import ClientLayout from '../components/ClientLayout';
-import Hero from '../components/Hero';
-import TechStack from '../components/TechStack';
-import InteractiveSkills from '../components/InteractiveSkills';
-import Projects from '../components/Projects';
-import Achievements from '../components/Achievements';
-import Education from '../components/Education';
-import Contact from '../components/Contact';
+import { getImage } from "astro:assets";
+import ClientLayout from "../components/ClientLayout";
+import Hero from "../components/Hero";
+import TechStack from "../components/TechStack";
+import InteractiveSkills from "../components/InteractiveSkills";
+import Projects from "../components/Projects";
+import Achievements from "../components/Achievements";
+import Education from "../components/Education";
+import Contact from "../components/Contact";
+import avatarImage from "../assets/raydel-avatar.jpg";
 
 const title = "Raydel Ernesto Reuco García - Portfolio";
-const description = "Portfolio de Raydel Ernesto Reuco García - Desarrollador Full Stack especializado en aplicaciones web, bases de datos y desarrollo de juegos.";
+const description =
+  "Portfolio de Raydel Ernesto Reuco García - Desarrollador Full Stack especializado en aplicaciones web, bases de datos y desarrollo de juegos.";
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+// Optimizar avatar automáticamente a WebP
+const optimizedAvatar = await getImage({
+  src: avatarImage,
+  width: 400,
+  height: 400,
+  format: "webp",
+  quality: 95,
+});
+
+// Avatar para Open Graph
+const optimizedAvatarOG = await getImage({
+  src: avatarImage,
+  width: 1200,
+  height: 1200,
+  format: "webp",
+  quality: 90,
+});
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es" class="scroll-smooth">
-	<head>
-		<!-- Basic Meta Tags -->
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="generator" content={Astro.generator} />
+  <head>
+    <!-- Basic Meta Tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
 
-		<!-- SEO Meta Tags -->
-		<title>{title}</title>
-		<meta name="description" content={description} />
-		<meta name="author" content="Raydel Ernesto Reuco García" />
-		<meta name="keywords" content="desarrollador full stack, programador, Cuba, ingeniería informática, JavaScript, Python, Django, Unity, bases de datos, PostgreSQL, desarrollo web" />
+    <!-- SEO Meta Tags -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Raydel Ernesto Reuco García" />
+    <meta
+      name="keywords"
+      content="desarrollador full stack, programador, Cuba, ingeniería informática, JavaScript, Python, Django, Unity, bases de datos, PostgreSQL, desarrollo web"
+    />
 
-		<!-- Canonical URL -->
-		<link rel="canonical" href={canonicalURL} />
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
 
-		<!-- Open Graph / Facebook -->
-		<meta property="og:type" content="website" />
-		<meta property="og:url" content={canonicalURL} />
-		<meta property="og:title" content={title} />
-		<meta property="og:description" content={description} />
-		<meta property="og:image" content={new URL('/favicon.svg', Astro.url)} />
-		<meta property="og:locale" content="es_ES" />
-		<meta property="og:locale:alternate" content="en_US" />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta
+      property="og:image"
+      content={new URL(optimizedAvatarOG.src, Astro.url)}
+    />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:locale:alternate" content="en_US" />
 
-		<!-- Twitter -->
-		<meta property="twitter:card" content="summary_large_image" />
-		<meta property="twitter:url" content={canonicalURL} />
-		<meta property="twitter:title" content={title} />
-		<meta property="twitter:description" content={description} />
-		<meta property="twitter:image" content={new URL('/favicon.svg', Astro.url)} />
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta
+      property="twitter:image"
+      content={new URL(optimizedAvatarOG.src, Astro.url)}
+    />
 
-		<!-- Favicons -->
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-		<!-- Apple touch icon removed - using favicon.svg -->
-		<link rel="manifest" href="/site.webmanifest" />
+    <!-- Favicons circulares (generados por script) -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/favicon-64x64.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="manifest" href="/site.webmanifest" />
 
-		<!-- Theme Color -->
-		<meta name="theme-color" content="#2563eb" />
-		<meta name="msapplication-TileColor" content="#2563eb" />
+    <!-- Preconnect para mejor performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
 
-		<!-- Preload Critical Resources -->
-		<!-- Font preload removed - using system fonts -->
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#2563eb" />
+    <meta name="msapplication-TileColor" content="#2563eb" />
 
-		<!-- DNS Prefetch for External Resources -->
-		<link rel="dns-prefetch" href="//fonts.googleapis.com" />
-		<link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
+    <!-- Preload Critical Resources -->
+    <link
+      rel="preload"
+      as="image"
+      href={optimizedAvatar.src}
+      type="image/webp"
+    />
 
-		<!-- JSON-LD Structured Data -->
-		<script type="application/ld+json" is:inline>
-		{
-			"@context": "https://schema.org",
-			"@type": "Person",
-			"name": "Raydel Ernesto Reuco García",
-			"jobTitle": "Full Stack Developer",
-			"description": "Computer Engineering Student specializing in web applications, databases, and game development",
-			"url": "https://raydel-portfolio.vercel.app",
-			"sameAs": [
-				"https://www.linkedin.com/in/raydel-ernesto-reuco-garc%C3%ADa-contact-info",
-				"https://github.com/raydel-reuco"
-			],
-			"address": {
-				"@type": "PostalAddress",
-				"addressLocality": "Havana",
-				"addressCountry": "Cuba"
-			},
-			"email": "raydel.reuco@gmail.com",
-			"telephone": "+535571136",
-			"knowsAbout": [
-				"JavaScript",
-				"Python",
-				"Django",
-				"Unity",
-				"PostgreSQL",
-				"Web Development",
-				"Game Development",
-				"Database Management"
-			],
-			"alumniOf": {
-				"@type": "Organization",
-				"name": "Universidad de las Ciencias Informáticas"
-			}
-		}
-		</script>
+    <!-- DNS Prefetch for External Resources -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" is:inline>
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Raydel Ernesto Reuco García",
+        "jobTitle": "Full Stack Developer",
+        "description": "Computer Engineering Student specializing in web applications, databases, and game development",
+        "url": "https://raydel-portfolio.vercel.app",
+        "sameAs": [
+          "https://www.linkedin.com/in/raydel-ernesto-reuco-garc%C3%ADa-contact-info",
+          "https://github.com/raydel-reuco"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Havana",
+          "addressCountry": "Cuba"
+        },
+        "email": "raydel.reuco@gmail.com",
+        "telephone": "+535571136",
+        "knowsAbout": [
+          "JavaScript",
+          "Python",
+          "Django",
+          "Unity",
+          "PostgreSQL",
+          "Web Development",
+          "Game Development",
+          "Database Management"
+        ],
+        "alumniOf": {
+          "@type": "Organization",
+          "name": "Universidad de las Ciencias Informáticas"
+        }
+      }
+    </script>
 
-		<!-- Analytics -->
-		<!-- Google Analytics will be added here if needed -->
+    <!-- Analytics -->
+    <!-- Google Analytics will be added here if needed -->
 
-		<!-- Performance Hints -->
-		<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <!-- Performance Hints -->
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
 
-		<!-- Security Headers -->
-		<meta http-equiv="X-Content-Type-Options" content="nosniff" />
-		<meta http-equiv="X-Frame-Options" content="DENY" />
-		<meta http-equiv="X-XSS-Protection" content="1; mode=block" />
-		<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    <meta
+      http-equiv="Referrer-Policy"
+      content="strict-origin-when-cross-origin"
+    />
 
-		<!-- CSS Custom Properties for Theming -->
-		<style>
-			:root {
-				--color-primary: #2563eb;
-				--color-primary-dark: #1d4ed8;
-				--color-secondary: #7c3aed;
-				--color-accent: #10b981;
-				--color-text: #1f2937;
-				--color-text-light: #6b7280;
-				--color-background: #ffffff;
-				--color-background-alt: #f9fafb;
-				--shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-				--shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-				--shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-				--shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
-				--border-radius: 0.5rem;
-				--border-radius-lg: 1rem;
-				--transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-			}
+    <!-- CSS Custom Properties for Theming -->
+    <style>
+      :root {
+        --color-primary: #2563eb;
+        --color-primary-dark: #1d4ed8;
+        --color-secondary: #7c3aed;
+        --color-accent: #10b981;
+        --color-text: #1f2937;
+        --color-text-light: #6b7280;
+        --color-background: #ffffff;
+        --color-background-alt: #f9fafb;
+        --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+        --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+        --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+        --border-radius: 0.5rem;
+        --border-radius-lg: 1rem;
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
 
-			.dark {
-				--color-text: #f9fafb;
-				--color-text-light: #d1d5db;
-				--color-background: #111827;
-				--color-background-alt: #1f2937;
-			}
+      .dark {
+        --color-text: #f9fafb;
+        --color-text-light: #d1d5db;
+        --color-background: #111827;
+        --color-background-alt: #1f2937;
+      }
 
-			* {
-				box-sizing: border-box;
-			}
+      * {
+        box-sizing: border-box;
+      }
 
-			html {
-				font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
-				scroll-behavior: smooth;
-			}
+      html {
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          "Roboto",
+          "Oxygen",
+          "Ubuntu",
+          "Cantarell",
+          sans-serif;
+        scroll-behavior: smooth;
+      }
 
-			body {
-				margin: 0;
-				padding: 0;
-				line-height: 1.5;
-				-webkit-font-smoothing: antialiased;
-				-moz-osx-font-smoothing: grayscale;
-				text-rendering: optimizeLegibility;
-			}
+      body {
+        margin: 0;
+        padding: 0;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+      }
 
-			/* Loading Animation */
-			.loading {
-				position: fixed;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				z-index: 9999;
-				transition: opacity 0.5s ease, visibility 0.5s ease;
-			}
+      /* Loading Animation */
+      .loading {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        transition:
+          opacity 0.5s ease,
+          visibility 0.5s ease;
+      }
 
-			.loading.hidden {
-				opacity: 0;
-				visibility: hidden;
-			}
+      .loading.hidden {
+        opacity: 0;
+        visibility: hidden;
+      }
 
-			.spinner {
-				width: 50px;
-				height: 50px;
-				border: 3px solid rgba(255, 255, 255, 0.3);
-				border-radius: 50%;
-				border-top-color: white;
-				animation: spin 1s ease-in-out infinite;
-			}
+      .spinner {
+        width: 50px;
+        height: 50px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: white;
+        animation: spin 1s ease-in-out infinite;
+      }
 
-			@keyframes spin {
-				to { transform: rotate(360deg); }
-			}
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
 
-			/* Focus Styles for Accessibility */
-			.focus\:outline-none:focus {
-				outline: 2px solid transparent;
-				outline-offset: 2px;
-			}
+      /* Focus Styles for Accessibility */
+      .focus\:outline-none:focus {
+        outline: 2px solid transparent;
+        outline-offset: 2px;
+      }
 
-			.focus\:ring-2:focus {
-				box-shadow: 0 0 0 2px var(--color-primary);
-			}
+      .focus\:ring-2:focus {
+        box-shadow: 0 0 0 2px var(--color-primary);
+      }
 
-			/* Smooth Animations */
-			.animate-pulse {
-				animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-			}
+      /* Smooth Animations */
+      .animate-pulse {
+        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
 
-			@keyframes pulse {
-				0%, 100% { opacity: 1; }
-				50% { opacity: 0.5; }
-			}
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+      }
 
-			/* Scrollbar Styles */
-			::-webkit-scrollbar {
-				width: 8px;
-			}
+      /* Scrollbar Styles */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
 
-			::-webkit-scrollbar-track {
-				background: var(--color-background-alt);
-			}
+      ::-webkit-scrollbar-track {
+        background: var(--color-background-alt);
+      }
 
-			::-webkit-scrollbar-thumb {
-				background: var(--color-primary);
-				border-radius: 4px;
-			}
+      ::-webkit-scrollbar-thumb {
+        background: var(--color-primary);
+        border-radius: 4px;
+      }
 
-			::-webkit-scrollbar-thumb:hover {
-				background: var(--color-primary-dark);
-			}
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--color-primary-dark);
+      }
 
-			/* Print Styles */
-			@media print {
-				* {
-					background: transparent !important;
-					color: black !important;
-					box-shadow: none !important;
-					text-shadow: none !important;
-				}
+      /* Print Styles */
+      @media print {
+        * {
+          background: transparent !important;
+          color: black !important;
+          box-shadow: none !important;
+          text-shadow: none !important;
+        }
 
-				a, a:visited {
-					text-decoration: underline;
-				}
+        a,
+        a:visited {
+          text-decoration: underline;
+        }
 
-				a[href]:after {
-					content: " (" attr(href) ")";
-				}
+        a[href]:after {
+          content: " (" attr(href) ")";
+        }
 
-				.no-print {
-					display: none !important;
-				}
-			}
+        .no-print {
+          display: none !important;
+        }
+      }
 
-			/* Reduce Motion for Accessibility */
-			@media (prefers-reduced-motion: reduce) {
-				html {
-					scroll-behavior: auto;
-				}
+      /* Reduce Motion for Accessibility */
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
 
-				*, *::before, *::after {
-					animation-duration: 0.01ms !important;
-					animation-iteration-count: 1 !important;
-					transition-duration: 0.01ms !important;
-				}
-			}
-		</style>
-	</head>
-	<body class="antialiased">
-		<!-- Loading Screen -->
-		<div id="loading" class="loading">
-			<div class="spinner"></div>
-		</div>
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <!-- Loading Screen -->
+    <div id="loading" class="loading">
+      <div class="spinner"></div>
+    </div>
 
-		<!-- Main Application -->
-		<ClientLayout client:load>
-			<!-- Hero Section -->
-			<Hero client:load />
+    <!-- Main Application -->
+    <ClientLayout client:load>
+      <!-- Hero Section -->
+      <Hero client:load avatarSrc={optimizedAvatar.src} />
 
-			<!-- Tech Stack Section -->
-			<TechStack client:load />
+      <!-- Tech Stack Section -->
+      <TechStack client:load />
 
-			<!-- Interactive Skills Demo -->
-			<InteractiveSkills client:load />
+      <!-- Interactive Skills Demo -->
+      <InteractiveSkills client:load />
 
-			<!-- Projects Section -->
-			<Projects client:load />
+      <!-- Projects Section -->
+      <Projects client:load />
 
-			<!-- Achievements Section -->
-			<Achievements client:load />
+      <!-- Achievements Section -->
+      <Achievements client:load />
 
-			<!-- Education Section -->
-			<Education client:load />
+      <!-- Education Section -->
+      <Education client:load />
 
-			<!-- Contact Section -->
-			<Contact client:load />
-		</ClientLayout>
+      <!-- Contact Section -->
+      <Contact client:load />
+    </ClientLayout>
 
-		<!-- Service Worker Registration -->
-		<script>
-			// Remove loading screen when page is fully loaded
-			window.addEventListener('load', () => {
-				const loading = document.getElementById('loading');
-				if (loading) {
-					setTimeout(() => {
-						loading.classList.add('hidden');
-					}, 500);
-				}
-			});
+    <!-- Service Worker Registration -->
+    <script>
+      // Remove loading screen when page is fully loaded
+      window.addEventListener("load", () => {
+        const loading = document.getElementById("loading");
+        if (loading) {
+          setTimeout(() => {
+            loading.classList.add("hidden");
+          }, 500);
+        }
+      });
 
-			// Service Worker registration removed - file not found
-			// if ('serviceWorker' in navigator) {
-			// 	window.addEventListener('load', () => {
-			// 		navigator.serviceWorker.register('/sw.js')
-			// 			.then((registration) => {
-			// 				console.log('SW registered: ', registration);
-			// 			})
-			// 			.catch((registrationError) => {
-			// 				console.log('SW registration failed: ', registrationError);
-			// 			});
-			// 	});
-			// }
+      // Service Worker registration removed - file not found
+      // if ('serviceWorker' in navigator) {
+      // 	window.addEventListener('load', () => {
+      // 		navigator.serviceWorker.register('/sw.js')
+      // 			.then((registration) => {
+      // 				console.log('SW registered: ', registration);
+      // 			})
+      // 			.catch((registrationError) => {
+      // 				console.log('SW registration failed: ', registrationError);
+      // 			});
+      // 	});
+      // }
 
-			// Analytics tracking (if Google Analytics is configured)
-			if (typeof (window as any).gtag !== 'undefined') {
-				(window as any).gtag('config', 'GA_MEASUREMENT_ID', {
-					page_title: document.title,
-					page_location: window.location.href,
-				});
-			}
+      // Analytics tracking (if Google Analytics is configured)
+      if (typeof (window as any).gtag !== "undefined") {
+        (window as any).gtag("config", "GA_MEASUREMENT_ID", {
+          page_title: document.title,
+          page_location: window.location.href,
+        });
+      }
 
-			// Performance monitoring
-			if ('PerformanceObserver' in window) {
-				const perfObserver = new PerformanceObserver((list) => {
-					list.getEntries().forEach((entry) => {
-						if (entry.entryType === 'largest-contentful-paint') {
-							console.log('LCP:', entry.startTime);
-						}
-						if (entry.entryType === 'first-input') {
-							console.log('FID:', (entry as any).processingStart - entry.startTime);
-						}
-					});
-				});
+      // Performance monitoring
+      if ("PerformanceObserver" in window) {
+        const perfObserver = new PerformanceObserver((list) => {
+          list.getEntries().forEach((entry) => {
+            if (entry.entryType === "largest-contentful-paint") {
+              console.log("LCP:", entry.startTime);
+            }
+            if (entry.entryType === "first-input") {
+              console.log(
+                "FID:",
+                (entry as any).processingStart - entry.startTime,
+              );
+            }
+          });
+        });
 
-				perfObserver.observe({entryTypes: ['largest-contentful-paint', 'first-input']});
-			}
-		</script>
+        perfObserver.observe({
+          entryTypes: ["largest-contentful-paint", "first-input"],
+        });
+      }
+    </script>
 
-		<!-- Emergency Fallback for JavaScript Disabled -->
-		<noscript>
-			<div style="position: fixed; top: 0; left: 0; width: 100%; background: #f59e0b; color: white; padding: 1rem; text-align: center; z-index: 10000;">
-				<strong>JavaScript is required</strong> - Please enable JavaScript in your browser to view this portfolio properly.
-			</div>
-		</noscript>
-	</body>
+    <!-- Emergency Fallback for JavaScript Disabled -->
+    <noscript>
+      <div
+        style="position: fixed; top: 0; left: 0; width: 100%; background: #f59e0b; color: white; padding: 1rem; text-align: center; z-index: 10000;"
+      >
+        <strong>JavaScript is required</strong> - Please enable JavaScript in your
+        browser to view this portfolio properly.
+      </div>
+    </noscript>
+  </body>
 </html>

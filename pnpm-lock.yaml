@@ -45,6 +45,9 @@ importers:
       react-icons:
         specifier: ^5.5.0
         version: 5.5.0(react@19.1.1)
+      sharp:
+        specifier: ^0.33.5
+        version: 0.33.5
     devDependencies:
       '@astrojs/sitemap':
         specifier: ^3.6.0

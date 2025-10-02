@@ -18,6 +18,7 @@ export default defineConfig({
 
   build: {
     assets: "_astro",
+    inlineStylesheets: "auto",
   },
 
   vite: {
@@ -30,5 +31,20 @@ export default defineConfig({
         "@supabase/supabase-js",
       ],
     },
+    build: {
+      cssCodeSplit: true,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            "react-vendor": ["react", "react-dom"],
+            "motion-vendor": ["framer-motion"],
+            "icons-vendor": ["lucide-react", "react-icons"],
+          },
+        },
+      },
+    },
   },
+
+  compressHTML: true,
+  scopedStyleStrategy: "where",
 });

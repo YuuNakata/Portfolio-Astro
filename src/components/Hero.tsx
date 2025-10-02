@@ -4,7 +4,11 @@ import React from "react";
 import { useLanguage } from "../contexts/LanguageContext";
 import { portfolioData } from "../data/portfolio";
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  avatarSrc?: string;
+}
+
+const Hero: React.FC<HeroProps> = ({ avatarSrc }) => {
   const { t } = useLanguage();
 
   const handleContactClick = () => {
@@ -128,11 +132,15 @@ const Hero: React.FC = () => {
                 <div className="w-full h-full rounded-full bg-white dark:bg-gray-900" />
               </motion.div>
               <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-                {portfolioData.personalInfo.avatar ? (
+                {avatarSrc || portfolioData.personalInfo.avatar ? (
                   <img
-                    src={portfolioData.personalInfo.avatar}
+                    src={avatarSrc || portfolioData.personalInfo.avatar}
                     alt={portfolioData.personalInfo.name}
+                    width={160}
+                    height={160}
                     className="w-full h-full object-cover"
+                    loading="eager"
+                    decoding="async"
                   />
                 ) : (
                   <div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-4xl font-bold">

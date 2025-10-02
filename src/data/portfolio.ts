@@ -11,7 +11,7 @@ export const portfolioData: PortfolioData = {
       "https://www.linkedin.com/in/raydel-ernesto-reuco-garc%C3%ADa-contact-info",
     summary:
       "Computer Science student specializing in full-stack development with focus on scalable web applications and database optimization. Committed to delivering efficient, user-centered solutions through modern technologies and best practices.",
-    avatar: "/images/avatar/raydel-avatar.jpg",
+    avatar: "/images/avatar/raydel-avatar.webp",
   },
 
   education: [
