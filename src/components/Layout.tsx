@@ -229,10 +229,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               </a>
               <span className="text-gray-400">•</span>
               <a
-                href="tel:+535571136"
+                href="tel:+5355791136"
                 className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
               >
-                +53 557 1136
+                +53 55791136
               </a>
               <span className="text-gray-400">•</span>
               <span className="text-gray-600 dark:text-gray-400">
