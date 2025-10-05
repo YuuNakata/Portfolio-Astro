@@ -382,42 +382,6 @@ const TechStack: React.FC = () => {
             </div>
           )}
         </motion.div>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={
-            hasIntersected ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
-          }
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="text-center mt-16"
-        >
-          <div className="bg-gradient-to-r from-slate-900 to-slate-800 dark:from-slate-800 dark:to-slate-700 rounded-2xl p-8 relative overflow-hidden">
-            <div className="absolute inset-0 bg-grid-white/5 bg-[size:30px_30px]" />
-            <div className="relative z-10">
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                {t("techstack.cta.title")}
-              </h3>
-              <p className="text-gray-300 mb-8 max-w-2xl mx-auto text-lg leading-relaxed">
-                {t("techstack.cta.description")}
-              </p>
-              <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => {
-                  const contactSection = document.querySelector("#contact");
-                  if (contactSection) {
-                    contactSection.scrollIntoView({ behavior: "smooth" });
-                  }
-                }}
-                className="px-8 py-4 bg-white text-slate-900 font-bold rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 inline-flex items-center space-x-2 group"
-              >
-                <span>{t("techstack.cta.button")}</span>
-                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
-              </motion.button>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

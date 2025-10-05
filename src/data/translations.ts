@@ -41,8 +41,12 @@ export const translations: Translation = {
     en: "Full Stack Developer",
   },
   "hero.subtitle": {
-    es: "CS Student • Problem Solver • Code Craftsman",
-    en: "CS Student • Problem Solver • Code Craftsman",
+    es: "Desarrollo de soluciones digitales",
+    en: "Digital solutions development",
+  },
+  "hero.cta.services": {
+    es: "Ver Servicios",
+    en: "View Services",
   },
   "hero.cta.contact": {
     es: "Contáctame",
@@ -616,6 +620,291 @@ export const translations: Translation = {
   "a11y.project.image": {
     es: "Imagen del proyecto",
     en: "Project image",
+  },
+
+  // Services Section - Navigation
+  "nav.services": {
+    es: "Servicios",
+    en: "Services",
+  },
+
+  // Services Section - Main
+  "services.badge": {
+    es: "Soluciones para tu Negocio",
+    en: "Solutions for Your Business",
+  },
+  "services.title": {
+    es: "¿Qué Puedo Hacer Por Tu Negocio?",
+    en: "What Can I Do For Your Business?",
+  },
+  "services.subtitle": {
+    es: "Soluciones digitales diseñadas para impulsar tu negocio, atraer más clientes y aumentar tus ventas. Sin complicaciones técnicas, solo resultados.",
+    en: "Digital solutions designed to boost your business, attract more customers, and increase your sales. No technical complications, just results.",
+  },
+
+  // Business Presence Service
+  "services.business.title": {
+    es: "Presencia Digital para tu Negocio",
+    en: "Digital Presence for Your Business",
+  },
+  "services.business.description": {
+    es: "Tu negocio disponible 24/7 en Internet. Los clientes podrán conocer tus productos, servicios, ubicación y horarios desde cualquier lugar.",
+    en: "Your business available 24/7 on the Internet. Customers can learn about your products, services, location, and hours from anywhere.",
+  },
+  "services.business.benefit1": {
+    es: "Miles de personas verán tu negocio online",
+    en: "Thousands of people will see your business online",
+  },
+  "services.business.benefit2": {
+    es: "Información de contacto siempre disponible",
+    en: "Contact information always available",
+  },
+  "services.business.benefit3": {
+    es: "Galería de fotos de tus productos o servicios",
+    en: "Photo gallery of your products or services",
+  },
+
+  // E-commerce Service
+  "services.ecommerce.title": {
+    es: "Tienda Online - Vende por Internet",
+    en: "Online Store - Sell on the Internet",
+  },
+  "services.ecommerce.description": {
+    es: "Vende tus productos online con un catálogo digital. Los clientes pueden ver, elegir y solicitar productos directamente desde sus teléfonos.",
+    en: "Sell your products online with a digital catalog. Customers can view, choose, and order products directly from their phones.",
+  },
+  "services.ecommerce.benefit1": {
+    es: "Catálogo de productos con fotos y precios",
+    en: "Product catalog with photos and prices",
+  },
+  "services.ecommerce.benefit2": {
+    es: "Los clientes pueden hacer pedidos en línea",
+    en: "Customers can place orders online",
+  },
+  "services.ecommerce.benefit3": {
+    es: "Gestiona el inventario y ventas fácilmente",
+    en: "Manage inventory and sales easily",
+  },
+
+  // Booking Service
+  "services.booking.title": {
+    es: "Sistema de Reservas y Citas",
+    en: "Booking and Appointment System",
+  },
+  "services.booking.description": {
+    es: "Para salones de belleza, consultorios, talleres o servicios. Los clientes agendan citas online y tú gestionas tu calendario automáticamente.",
+    en: "For beauty salons, offices, workshops, or services. Customers book appointments online and you manage your calendar automatically.",
+  },
+  "services.booking.benefit1": {
+    es: "Los clientes reservan cuando les convenga",
+    en: "Customers book when convenient for them",
+  },
+  "services.booking.benefit2": {
+    es: "Recordatorios automáticos de citas",
+    en: "Automatic appointment reminders",
+  },
+  "services.booking.benefit3": {
+    es: "Evita cancelaciones y dobles reservas",
+    en: "Avoid cancellations and double bookings",
+  },
+
+  // Management Service
+  "services.management.title": {
+    es: "Control y Gestión Empresarial",
+    en: "Business Control and Management",
+  },
+  "services.management.description": {
+    es: "Controla inventario, empleados, ventas y gastos en un solo lugar. Todo organizado y accesible desde tu computadora o teléfono.",
+    en: "Control inventory, employees, sales, and expenses in one place. Everything organized and accessible from your computer or phone.",
+  },
+  "services.management.benefit1": {
+    es: "Control de inventario y stock en tiempo real",
+    en: "Real-time inventory and stock control",
+  },
+  "services.management.benefit2": {
+    es: "Registro de ventas y reportes automáticos",
+    en: "Sales tracking and automatic reports",
+  },
+  "services.management.benefit3": {
+    es: "Gestión de empleados y turnos de trabajo",
+    en: "Employee and work shift management",
+  },
+
+  // Features Section
+  "services.features.title": {
+    es: "Todo lo que Necesitas Incluido",
+    en: "Everything You Need Included",
+  },
+  "services.features.online.title": {
+    es: "Siempre en Línea",
+    en: "Always Online",
+  },
+  "services.features.online.desc": {
+    es: "Tu negocio disponible 24/7 sin interrupciones",
+    en: "Your business available 24/7 without interruptions",
+  },
+  "services.features.mobile.title": {
+    es: "Desde Cualquier Dispositivo",
+    en: "From Any Device",
+  },
+  "services.features.mobile.desc": {
+    es: "Funciona en computadoras, tablets y celulares",
+    en: "Works on computers, tablets, and phones",
+  },
+  "services.features.growth.title": {
+    es: "Crece tu Negocio",
+    en: "Grow Your Business",
+  },
+  "services.features.growth.desc": {
+    es: "Alcanza más clientes y aumenta tus ventas",
+    en: "Reach more customers and increase sales",
+  },
+  "services.features.communication.title": {
+    es: "Comunicación Directa",
+    en: "Direct Communication",
+  },
+  "services.features.communication.desc": {
+    es: "Tus clientes te contactan fácilmente",
+    en: "Your customers contact you easily",
+  },
+
+  // CTA Section
+  "services.cta.title": {
+    es: "¿No Sabes Qué Necesitas Exactamente?",
+    en: "Not Sure What You Need Exactly?",
+  },
+  "services.cta.description": {
+    es: "No te preocupes. Cuéntame sobre tu negocio y juntos encontraremos la mejor solución para ti. Sin compromiso.",
+    en: "Don't worry. Tell me about your business and together we'll find the best solution for you. No commitment.",
+  },
+  "services.cta.button.contact": {
+    es: "Conversemos",
+    en: "Let's Talk",
+  },
+  "services.cta.note": {
+    es: "Respuesta en menos de 24 horas · Consulta gratuita",
+    en: "Response within 24 hours · Free consultation",
+  },
+
+  // Services Demo Content - Business Demo
+  "services.demo.business.name": {
+    es: "Restaurante La Esquina",
+    en: "La Esquina Restaurant",
+  },
+  "services.demo.business.tagline": {
+    es: "Comida tradicional",
+    en: "Traditional Food",
+  },
+  "services.demo.business.address": {
+    es: "Calle Principal #123",
+    en: "Main Street #123",
+  },
+  "services.demo.business.hours": {
+    es: "9:00 AM - 10:00 PM",
+    en: "9:00 AM - 10:00 PM",
+  },
+  "services.demo.business.phone": {
+    es: "+53 5555-1234",
+    en: "+53 5555-1234",
+  },
+  "services.demo.business.available": {
+    es: "Visítanos 24/7",
+    en: "Visit us 24/7",
+  },
+
+  // Services Demo Content - Ecommerce Demo
+  "services.demo.ecommerce.product1": {
+    es: "Camisa Azul",
+    en: "Blue Shirt",
+  },
+  "services.demo.ecommerce.product2": {
+    es: "Pantalón",
+    en: "Pants",
+  },
+  "services.demo.ecommerce.add": {
+    es: "Agregar",
+    en: "Add",
+  },
+  "services.demo.ecommerce.cart": {
+    es: "Carrito",
+    en: "Cart",
+  },
+  "services.demo.ecommerce.total": {
+    es: "Total:",
+    en: "Total:",
+  },
+  "services.demo.ecommerce.checkout": {
+    es: "Finalizar Compra",
+    en: "Checkout",
+  },
+
+  // Services Demo Content - Booking Demo
+  "services.demo.booking.name": {
+    es: "Salón Glamour",
+    en: "Glamour Salon",
+  },
+  "services.demo.booking.service1": {
+    es: "Corte de Cabello",
+    en: "Haircut",
+  },
+  "services.demo.booking.service2": {
+    es: "Manicure",
+    en: "Manicure",
+  },
+  "services.demo.booking.service3": {
+    es: "Pedicure",
+    en: "Pedicure",
+  },
+  "services.demo.booking.available": {
+    es: "Disponible",
+    en: "Available",
+  },
+  "services.demo.booking.booked": {
+    es: "Ocupado",
+    en: "Booked",
+  },
+  "services.demo.booking.reminder": {
+    es: "Recordatorio de Cita",
+    en: "Appointment Reminder",
+  },
+  "services.demo.booking.reminderText": {
+    es: "Mañana a las 10:00 AM - Corte de Cabello",
+    en: "Tomorrow at 10:00 AM - Haircut",
+  },
+
+  // Services Demo Content - Management Demo
+  "services.demo.management.salesToday": {
+    es: "Ventas Hoy",
+    en: "Sales Today",
+  },
+  "services.demo.management.products": {
+    es: "Productos",
+    en: "Products",
+  },
+  "services.demo.management.customers": {
+    es: "Clientes",
+    en: "Customers",
+  },
+  "services.demo.management.employees": {
+    es: "Empleados",
+    en: "Employees",
+  },
+  "services.demo.management.weeklySales": {
+    es: "Ventas Semanales",
+    en: "Weekly Sales",
+  },
+  "services.demo.management.stockAlert": {
+    es: "Alerta de Stock",
+    en: "Stock Alert",
+  },
+  "services.demo.management.stockAlertText": {
+    es: "5 productos necesitan reabastecimiento",
+    en: "5 products need restocking",
+  },
+
+  "common.theme.toggle": {
+    es: "Cambiar tema",
+    en: "Toggle theme",
   },
 };
 

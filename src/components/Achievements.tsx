@@ -255,45 +255,6 @@ const Achievements: React.FC = () => {
             <WhatIBringCard key={item.id} item={item} index={index} />
           ))}
         </div>
-
-        {/* Call to Action */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={
-            hasIntersected ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
-          }
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-center"
-        >
-          <div className="bg-gradient-to-r from-gray-900 to-gray-800 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-8 text-white relative overflow-hidden">
-            {/* Background pattern */}
-            <div className="absolute inset-0 bg-grid-white/5 bg-[size:20px_20px]" />
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20" />
-
-            <div className="relative z-10">
-              <h3 className="text-2xl md:text-3xl font-bold mb-4">
-                {t("whatibring.cta.title")}
-              </h3>
-              <p className="text-gray-300 mb-8 max-w-2xl mx-auto text-lg">
-                {t("whatibring.cta.description")}
-              </p>
-              <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => {
-                  const contactSection = document.querySelector("#contact");
-                  if (contactSection) {
-                    contactSection.scrollIntoView({ behavior: "smooth" });
-                  }
-                }}
-                className="px-8 py-4 bg-white text-gray-900 font-bold rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 inline-flex items-center space-x-2"
-              >
-                <span>{t("whatibring.cta.button")}</span>
-                <ChevronRight className="w-5 h-5" />
-              </motion.button>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

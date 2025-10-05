@@ -1,5 +1,12 @@
 import { easeInOut, easeOut, motion } from "framer-motion";
-import { Download, ExternalLink, Mail, MapPin, Phone } from "lucide-react";
+import {
+  Download,
+  ExternalLink,
+  Code2,
+  Zap,
+  Database,
+  Rocket,
+} from "lucide-react";
 import React from "react";
 import { useLanguage } from "../contexts/LanguageContext";
 import { portfolioData } from "../data/portfolio";
@@ -11,19 +18,23 @@ interface HeroProps {
 const Hero: React.FC<HeroProps> = ({ avatarSrc }) => {
   const { t } = useLanguage();
 
-  const handleContactClick = () => {
-    const contactSection = document.querySelector("#contact");
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   const handleProjectsClick = () => {
     const projectsSection = document.querySelector("#projects");
     if (projectsSection) {
       projectsSection.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  const quickStats = [
+    { icon: Code2, label: "Full Stack", color: "from-blue-500 to-cyan-500" },
+    { icon: Zap, label: "Fast Deploy", color: "from-purple-500 to-pink-500" },
+    {
+      icon: Database,
+      label: "Data Expert",
+      color: "from-green-500 to-emerald-500",
+    },
+    { icon: Rocket, label: "Scalable", color: "from-orange-500 to-red-500" },
+  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -63,45 +74,25 @@ const Hero: React.FC<HeroProps> = ({ avatarSrc }) => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-start justify-center overflow-hidden pt-20 md:pt-16"
     >
-      {/* Background decorations */}
-      <div className="absolute inset-0">
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            rotate: [0, 180, 360],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: [0, 0, 1, 1],
-          }}
-          className="absolute top-10 left-10 w-20 h-20 bg-blue-500/10 rounded-full filter blur-xl"
+      {/* Background decorations with grid pattern */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Grid pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]" />
+
+        {/* Gradient orbs */}
+        <div
+          className="absolute -top-40 -left-40 w-96 h-96 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-full blur-3xl animate-pulse"
+          style={{ animationDuration: "8s" }}
         />
-        <motion.div
-          animate={{
-            scale: [1.2, 1, 1.2],
-            rotate: [360, 180, 0],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: [0, 0, 1, 1],
-          }}
-          className="absolute bottom-10 right-10 w-32 h-32 bg-purple-500/10 rounded-full filter blur-xl"
+        <div
+          className="absolute -bottom-40 -right-40 w-96 h-96 bg-gradient-to-tr from-purple-500/10 to-pink-500/10 rounded-full blur-3xl animate-pulse"
+          style={{ animationDuration: "10s" }}
         />
-        <motion.div
-          animate={{
-            y: [0, -20, 0],
-            x: [0, 10, 0],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: easeInOut,
-          }}
-          className="absolute top-1/2 right-20 w-16 h-16 bg-green-500/10 rounded-full filter blur-lg"
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-green-500/5 to-blue-500/5 rounded-full blur-3xl animate-pulse"
+          style={{ animationDuration: "12s" }}
         />
       </div>
 
@@ -115,136 +106,115 @@ const Hero: React.FC<HeroProps> = ({ avatarSrc }) => {
           {/* Avatar */}
           <motion.div
             variants={avatarVariants}
-            className="mb-8 flex justify-center"
+            className="mb-3 flex justify-center"
           >
-            <div className="relative">
-              <motion.div
-                animate={{
-                  rotate: [0, 360],
-                }}
-                transition={{
-                  duration: 20,
-                  repeat: Infinity,
-                  ease: [0, 0, 1, 1],
-                }}
-                className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-green-500 p-1"
-              >
-                <div className="w-full h-full rounded-full bg-white dark:bg-gray-900" />
-              </motion.div>
-              <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-                {avatarSrc || portfolioData.personalInfo.avatar ? (
-                  <img
-                    src={avatarSrc || portfolioData.personalInfo.avatar}
-                    alt={portfolioData.personalInfo.name}
-                    width={160}
-                    height={160}
-                    className="w-full h-full object-cover"
-                    loading="eager"
-                    decoding="async"
-                  />
-                ) : (
-                  <div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-4xl font-bold">
-                    {portfolioData.personalInfo.name.charAt(0)}
-                  </div>
-                )}
-              </div>
+            <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden bg-gray-200 dark:bg-gray-700 ring-4 ring-blue-500/20 shadow-xl hover:ring-blue-500/40 transition-all duration-300">
+              {avatarSrc || portfolioData.personalInfo.avatar ? (
+                <img
+                  src={avatarSrc || portfolioData.personalInfo.avatar}
+                  alt="Raydel Reuco"
+                  width={160}
+                  height={160}
+                  className="w-full h-full object-cover"
+                  loading="eager"
+                  decoding="async"
+                />
+              ) : (
+                <div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-4xl font-bold">
+                  R
+                </div>
+              )}
             </div>
           </motion.div>
-
-          {/* Greeting */}
-          <motion.p
-            variants={itemVariants}
-            className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-2"
-          >
-            {t("hero.greeting")} 👋
-          </motion.p>
 
           {/* Name */}
           <motion.h1
             variants={itemVariants}
-            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4"
+            className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4"
           >
             <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-green-600 bg-clip-text text-transparent">
-              {portfolioData.personalInfo.name}
+              Raydel Reuco
             </span>
           </motion.h1>
+
+          {/* Decorative line */}
+          <motion.div
+            variants={itemVariants}
+            className="w-20 h-1 bg-gradient-to-r from-blue-600 via-purple-600 to-green-600 rounded-full mx-auto mb-4"
+          />
 
           {/* Title */}
           <motion.h2
             variants={itemVariants}
-            className="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-800 dark:text-white mb-4"
+            className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-2 flex items-center justify-center gap-2"
           >
-            {t("hero.title")}
+            <span>{t("hero.title")}</span>
+            <span className="text-gray-400">•</span>
+            <span className="inline-flex items-center gap-1">
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  fillRule="evenodd"
+                  d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                  clipRule="evenodd"
+                />
+              </svg>
+              {portfolioData.personalInfo.location}
+            </span>
           </motion.h2>
 
           {/* Subtitle */}
           <motion.p
             variants={itemVariants}
-            className="text-xl md:text-2xl text-blue-600 dark:text-blue-400 mb-8"
+            className="text-lg md:text-xl text-gray-800 dark:text-white font-medium mb-6"
           >
             {t("hero.subtitle")}
           </motion.p>
 
-          {/* Summary */}
-          <motion.p
-            variants={itemVariants}
-            className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed"
-            suppressHydrationWarning
-          >
-            {t("personalInfo.summary")}
-          </motion.p>
-
-          {/* Contact Info */}
+          {/* Quick Stats */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-wrap justify-center items-center gap-6 mb-12 text-gray-600 dark:text-gray-400"
+            className="flex flex-wrap justify-center gap-3 mb-6"
           >
-            <div className="flex items-center gap-2">
-              <MapPin className="w-5 h-5 text-blue-500" />
-              <span>{portfolioData.personalInfo.location}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Mail className="w-5 h-5 text-green-500" />
-              <a
-                href={`mailto:${portfolioData.personalInfo.email}`}
-                className="hover:text-green-600 dark:hover:text-green-400 transition-colors"
+            {quickStats.map((stat, index) => (
+              <motion.div
+                key={index}
+                whileHover={{ scale: 1.1, y: -3 }}
+                className={`p-3 rounded-xl bg-gradient-to-br ${stat.color} shadow-md hover:shadow-lg transition-shadow cursor-pointer`}
+                title={stat.label}
               >
-                {portfolioData.personalInfo.email}
-              </a>
-            </div>
-            <div className="flex items-center gap-2">
-              <Phone className="w-5 h-5 text-purple-500" />
-              <a
-                href={`tel:${portfolioData.personalInfo.phone}`}
-                className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
-              >
-                {portfolioData.personalInfo.phone}
-              </a>
-            </div>
+                <stat.icon className="w-5 h-5 text-white" />
+              </motion.div>
+            ))}
           </motion.div>
 
           {/* CTA Buttons */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-8"
           >
             <motion.button
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              onClick={handleContactClick}
-              className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2"
+              onClick={() => {
+                const servicesSection = document.querySelector("#services");
+                if (servicesSection) {
+                  servicesSection.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+              className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 flex items-center justify-center gap-2 relative overflow-hidden group"
             >
-              <Mail className="w-5 h-5" />
-              {t("hero.cta.contact")}
+              <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+              <ExternalLink className="w-5 h-5 relative z-10" />
+              <span className="relative z-10">{t("hero.cta.services")}</span>
             </motion.button>
 
             <motion.button
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               onClick={handleProjectsClick}
-              className="w-full sm:w-auto px-8 py-4 bg-white dark:bg-gray-800 text-gray-800 dark:text-white font-semibold rounded-lg shadow-lg hover:shadow-xl border-2 border-gray-300 dark:border-gray-600 hover:border-blue-500 dark:hover:border-blue-400 transition-all duration-300 flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-8 py-4 bg-white dark:bg-gray-800 text-gray-800 dark:text-white font-semibold rounded-lg shadow-lg hover:shadow-xl border-2 border-gray-300 dark:border-gray-600 hover:border-blue-500 dark:hover:border-blue-400 transition-all duration-300 flex items-center justify-center gap-2 group"
             >
-              <ExternalLink className="w-5 h-5" />
+              <ExternalLink className="w-5 h-5 group-hover:rotate-45 transition-transform duration-300" />
               {t("hero.cta.projects")}
             </motion.button>
 
@@ -253,18 +223,15 @@ const Hero: React.FC<HeroProps> = ({ avatarSrc }) => {
               whileTap={{ scale: 0.95 }}
               href="/resume.pdf"
               download="Raydel_Ernesto_Reuco_Garcia_Resume.pdf"
-              className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-green-600 to-blue-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-green-600 to-blue-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 group"
             >
-              <Download className="w-5 h-5" />
+              <Download className="w-5 h-5 group-hover:translate-y-1 transition-transform duration-300" />
               {t("hero.cta.resume")}
             </motion.a>
           </motion.div>
 
           {/* Scroll indicator */}
-          <motion.div
-            variants={itemVariants}
-            className="mt-16 flex justify-center"
-          >
+          <motion.div variants={itemVariants} className="flex justify-center">
             <motion.div
               animate={{
                 y: [0, 10, 0],
@@ -274,9 +241,15 @@ const Hero: React.FC<HeroProps> = ({ avatarSrc }) => {
                 repeat: Infinity,
                 ease: easeInOut,
               }}
-              className="flex flex-col items-center text-gray-500 dark:text-gray-400"
+              className="flex flex-col items-center text-gray-500 dark:text-gray-400 cursor-pointer"
+              onClick={() => {
+                const servicesSection = document.querySelector("#services");
+                if (servicesSection) {
+                  servicesSection.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
             >
-              <span className="text-sm mb-2">
+              <span className="text-sm mb-2 font-medium">
                 {t("common.scroll.down") || "Scroll down"}
               </span>
               <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center">
@@ -295,31 +268,6 @@ const Hero: React.FC<HeroProps> = ({ avatarSrc }) => {
             </motion.div>
           </motion.div>
         </motion.div>
-      </div>
-
-      {/* Floating particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={i}
-            animate={{
-              y: [0, -100, 0],
-              x: [0, 50, 0],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: 8 + i * 2,
-              repeat: Infinity,
-              delay: i * 2,
-              ease: easeInOut,
-            }}
-            className={`absolute w-2 h-2 bg-blue-500 rounded-full`}
-            style={{
-              left: `${10 + i * 15}%`,
-              top: `${60 + i * 5}%`,
-            }}
-          />
-        ))}
       </div>
     </section>
   );
