@@ -378,6 +378,10 @@ const optimizedAvatarOG = await getImage({
         }
       });
 
+      // Initialize Analytics Tracking
+      import { initAnalytics } from "../lib/analytics";
+      initAnalytics();
+
       // Service Worker registration removed - file not found
       // if ('serviceWorker' in navigator) {
       // 	window.addEventListener('load', () => {
