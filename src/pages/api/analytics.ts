@@ -1,28 +1,41 @@
 import type { APIRoute } from "astro";
 import { createClient } from "@supabase/supabase-js";
 
-const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
-const supabaseKey = import.meta.env.SUPABASE_SERVICE_ROLE_KEY;
+// Force this endpoint to be server-rendered (not pre-rendered)
+export const prerender = false;
 
-if (!supabaseUrl || !supabaseKey) {
-  throw new Error("Missing Supabase environment variables");
-}
+const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL || "";
+const supabaseKey = import.meta.env.SUPABASE_SERVICE_ROLE_KEY || "";
 
-const supabase = createClient(supabaseUrl, supabaseKey);
+// Only create client if variables are available (skip during build)
+const supabase =
+  supabaseUrl && supabaseKey ? createClient(supabaseUrl, supabaseKey) : null;
 
 export const POST: APIRoute = async ({ request }) => {
+  // Check if Supabase is configured
+  if (!supabase) {
+    return new Response(
+      JSON.stringify({ error: "Analytics service not configured" }),
+      {
+        status: 503,
+        headers: { "Content-Type": "application/json" },
+      },
+    );
+  }
+
   try {
     const body = await request.json();
     const { action, secretKey } = body;
 
     // Verify secret key
-    const expectedSecret = import.meta.env.ANALYTICS_SECRET_KEY || "portfolio-analytics-secret-2024";
+    const expectedSecret =
+      import.meta.env.ANALYTICS_SECRET_KEY || "portfolio-analytics-secret-2024";
 
     if (secretKey !== expectedSecret) {
-      return new Response(
-        JSON.stringify({ error: "Unauthorized" }),
-        { status: 401, headers: { "Content-Type": "application/json" } }
-      );
+      return new Response(JSON.stringify({ error: "Unauthorized" }), {
+        status: 401,
+        headers: { "Content-Type": "application/json" },
+      });
     }
 
     let result;
@@ -93,8 +106,13 @@ export const POST: APIRoute = async ({ request }) => {
 
       default:
         return new Response(
-          JSON.stringify({ error: "Invalid action. Use: summary, daily, monthly, or custom" }),
-          { status: 400, headers: { "Content-Type": "application/json" } }
+          JSON.stringify({
+            error: "Invalid action. Use: summary, daily, monthly, or custom",
+          }),
+          {
+            status: 400,
+            headers: { "Content-Type": "application/json" },
+          },
         );
     }
 
@@ -104,9 +122,9 @@ export const POST: APIRoute = async ({ request }) => {
     });
   } catch (error) {
     console.error("Analytics API error:", error);
-    return new Response(
-      JSON.stringify({ error: "Internal server error" }),
-      { status: 500, headers: { "Content-Type": "application/json" } }
-    );
+    return new Response(JSON.stringify({ error: "Internal server error" }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" },
+    });
   }
 };
