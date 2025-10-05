@@ -46,7 +46,7 @@ const env = loadEnv();
 
 const API_URL = env.PUBLIC_URL || "https://portfolio-ray.is-a.dev";
 const SECRET_KEY =
-  env.ANALYTICS_SECRET_KEY || "portfolio-analytics-secret-2024";
+  env.ANALYTICS_SECRET_KEY || "portfolio-ray-analytics-secret-2025";
 
 const COLORS = {
   reset: "\x1b[0m",
