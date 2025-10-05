@@ -18,6 +18,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const navigationItems = React.useMemo(
     () => [
       { href: "#home", label: t("nav.home") },
+      { href: "#services", label: t("nav.services") },
       { href: "#about", label: t("nav.about") },
       { href: "#skills", label: t("nav.skills") },
       { href: "#projects", label: t("nav.projects") },
