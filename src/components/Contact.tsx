@@ -59,23 +59,23 @@ const Contact: React.FC = () => {
     const newErrors: Partial<FormData> = {};
 
     if (!formData.name.trim()) {
-      newErrors.name = "Name is required";
+      newErrors.name = t("contact.form.error.name_required");
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
+      newErrors.email = t("contact.form.error.email_required");
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email address";
+      newErrors.email = t("contact.form.error.email_invalid");
     }
 
     if (!formData.subject.trim()) {
-      newErrors.subject = "Subject is required";
+      newErrors.subject = t("contact.form.error.subject_required");
     }
 
     if (!formData.message.trim()) {
-      newErrors.message = "Message is required";
+      newErrors.message = t("contact.form.error.message_required");
     } else if (formData.message.trim().length < 10) {
-      newErrors.message = "Message must be at least 10 characters long";
+      newErrors.message = t("contact.form.error.message_too_short");
     }
 
     setErrors(newErrors);

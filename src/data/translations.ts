@@ -316,6 +316,22 @@ export const translations: Translation = {
     es: "Desarrollo de una API REST para una aplicación de gestión de tareas. Incluye autenticación JWT, validación de datos, documentación con Swagger y pruebas automatizadas.",
     en: "Development of a REST API for a task management application. Includes JWT authentication, data validation, Swagger documentation and automated testing.",
   },
+  "project.moogle.title": {
+    es: "Moogle - Motor de Búsqueda",
+    en: "Moogle - Search Engine",
+  },
+  "project.moogle.description": {
+    es: "Motor de búsqueda avanzado implementado en C# con algoritmos TF-IDF para ranking de documentos y Levenshtein Distance para sugerencias. Incluye operadores de búsqueda (!,^,~,*) y cálculo de similitud del coseno para resultados relevantes.",
+    en: "Advanced search engine implemented in C# with TF-IDF algorithms for document ranking and Levenshtein Distance for suggestions. Includes search operators (!,^,~,*) and cosine similarity calculation for relevant results.",
+  },
+  "project.moetasker.title": {
+    es: "MoeTasker - Bot de Telegram",
+    en: "MoeTasker - Telegram Bot",
+  },
+  "project.moetasker.description": {
+    es: "Bot de Telegram para gestión de tareas desarrollado con Next.js y Webhooks. Implementa API de Telegram para interacciones en tiempo real y gestión eficiente de tareas mediante comandos.",
+    en: "Telegram bot for task management developed with Next.js and Webhooks. Implements Telegram API for real-time interactions and efficient task management through commands.",
+  },
 
   // What I Bring Section
   "whatibring.title": {
@@ -465,6 +481,123 @@ export const translations: Translation = {
   "education.description": {
     es: "Actualmente cursando una carrera en Ingeniería Informática con enfoque en desarrollo de software, gestión de bases de datos y prácticas modernas de programación.",
     en: "Currently pursuing a degree in Computer Engineering with focus on software development, database management, and modern programming practices.",
+  },
+
+  // Contact Form Validation
+  "contact.form.error.name_required": {
+    es: "El nombre es requerido",
+    en: "Name is required",
+  },
+  "contact.form.error.email_required": {
+    es: "El correo electrónico es requerido",
+    en: "Email is required",
+  },
+  "contact.form.error.email_invalid": {
+    es: "Por favor ingresa un correo electrónico válido",
+    en: "Please enter a valid email address",
+  },
+  "contact.form.error.subject_required": {
+    es: "El asunto es requerido",
+    en: "Subject is required",
+  },
+  "contact.form.error.message_required": {
+    es: "El mensaje es requerido",
+    en: "Message is required",
+  },
+  "contact.form.error.message_too_short": {
+    es: "El mensaje debe tener al menos 10 caracteres",
+    en: "Message must be at least 10 characters long",
+  },
+
+  "education.stats.study_period": {
+    es: "Período de Estudio",
+    en: "Study Period",
+  },
+  "education.stats.completed": {
+    es: "Completado",
+    en: "Completed",
+  },
+  "education.stats.institution": {
+    es: "Institución",
+    en: "Institution",
+  },
+  "education.stats.progress": {
+    es: "Progreso",
+    en: "Progress",
+  },
+  "education.skills.computer_engineering": {
+    es: "Ingeniería Informática",
+    en: "Computer Engineering",
+  },
+  "education.skills.software_development": {
+    es: "Desarrollo de Software",
+    en: "Software Development",
+  },
+  "education.skills.database_management": {
+    es: "Gestión de Bases de Datos",
+    en: "Database Management",
+  },
+  "education.skills.programming": {
+    es: "Programación",
+    en: "Programming",
+  },
+
+  // Interactive Skills
+  "skills.demo.responsive.title": {
+    es: "Diseño Responsivo",
+    en: "Responsive Design",
+  },
+  "skills.demo.responsive.description": {
+    es: "Mira la magia del diseño responsivo en acción",
+    en: "Watch the magic of responsive design in action",
+  },
+  "skills.demo.algorithms.title": {
+    es: "Visualización de Algoritmos",
+    en: "Algorithm Visualization",
+  },
+  "skills.demo.algorithms.description": {
+    es: "Ve los algoritmos de ordenamiento cobrar vida",
+    en: "See sorting algorithms come to life",
+  },
+  "skills.demo.performance.title": {
+    es: "Optimización de Rendimiento",
+    en: "Performance Optimization",
+  },
+  "skills.demo.performance.description": {
+    es: "Experimenta el impacto de la optimización",
+    en: "Experience the impact of optimization",
+  },
+  "skills.demo.query.parsing": {
+    es: "Analizando consulta...",
+    en: "Parsing query...",
+  },
+  "skills.demo.query.optimizing": {
+    es: "Optimizando plan de ejecución...",
+    en: "Optimizing execution plan...",
+  },
+  "skills.demo.query.indexing": {
+    es: "Aplicando índices...",
+    en: "Applying indexes...",
+  },
+  "skills.demo.query.fetching": {
+    es: "Obteniendo datos...",
+    en: "Fetching data...",
+  },
+  "skills.demo.query.formatting": {
+    es: "Formateando resultados...",
+    en: "Formatting results...",
+  },
+  "common.scroll_to_top": {
+    es: "Volver arriba",
+    en: "Scroll to top",
+  },
+  "skills.demo.database.title": {
+    es: "Consultas de Base de Datos",
+    en: "Database Queries",
+  },
+  "skills.demo.database.description": {
+    es: "Consultas SQL optimizadas en tiempo real",
+    en: "Optimized SQL queries in real-time",
   },
 
   // What I Bring

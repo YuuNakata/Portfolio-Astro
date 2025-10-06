@@ -250,7 +250,7 @@ const Hero: React.FC<HeroProps> = ({ avatarSrc }) => {
               }}
             >
               <span className="text-sm mb-2 font-medium">
-                {t("common.scroll.down") || "Scroll down"}
+                {t("common.scroll.down")}
               </span>
               <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center">
                 <motion.div

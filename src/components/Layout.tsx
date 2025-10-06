@@ -268,7 +268,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         }
         onClick={scrollToTop}
         className="fixed bottom-8 right-8 z-30 p-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg transition-colors"
-        aria-label="Scroll to top"
+        aria-label={t("common.scroll_to_top")}
       >
         <ArrowUp className="w-5 h-5" />
       </motion.button>

@@ -228,24 +228,16 @@ const Education: React.FC = () => {
                 </div>
               </div>
 
-              {/* Description */}
-              <p
-                className="text-gray-600 dark:text-gray-400 leading-relaxed mb-4"
-                suppressHydrationWarning
-              >
-                {t("education.description")}
-              </p>
-
               {/* Skills/Highlights */}
               <div className="flex flex-wrap gap-2">
                 {[
-                  "Computer Engineering",
-                  "Software Development",
-                  "Database Management",
-                  "Programming",
-                ].map((skill) => (
+                  "education.skills.computer_engineering",
+                  "education.skills.software_development",
+                  "education.skills.database_management",
+                  "education.skills.programming",
+                ].map((skillKey) => (
                   <motion.span
-                    key={skill}
+                    key={skillKey}
                     whileHover={{ scale: 1.05 }}
                     className={`px-3 py-1 text-xs font-medium rounded-full ${
                       isCurrent
@@ -253,7 +245,7 @@ const Education: React.FC = () => {
                         : "bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200"
                     }`}
                   >
-                    {skill}
+                    {t(skillKey)}
                   </motion.span>
                 ))}
               </div>
@@ -263,7 +255,7 @@ const Education: React.FC = () => {
                 <div className="mt-4">
                   <div className="flex justify-between items-center mb-2">
                     <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                      Progress
+                      {t("education.stats.progress")}
                     </span>
                     <span className="text-sm text-green-600 dark:text-green-400">
                       75%
@@ -390,8 +382,7 @@ const Education: React.FC = () => {
           </h2>
 
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-8">
-            {t("education.description") ||
-              "My academic journey and continuous learning path in computer engineering and technology."}
+            {t("education.cta.description")}
           </p>
 
           {/* Education Stats */}
@@ -409,7 +400,7 @@ const Education: React.FC = () => {
                 </span>
               </div>
               <p className="text-gray-600 dark:text-gray-400 text-sm">
-                Study Period
+                {t("education.stats.study_period")}
               </p>
             </motion.div>
 
@@ -421,7 +412,7 @@ const Education: React.FC = () => {
                 </span>
               </div>
               <p className="text-gray-600 dark:text-gray-400 text-sm">
-                Completed
+                {t("education.stats.completed")}
               </p>
             </motion.div>
 
@@ -433,7 +424,7 @@ const Education: React.FC = () => {
                 </span>
               </div>
               <p className="text-gray-600 dark:text-gray-400 text-sm">
-                Institution
+                {t("education.stats.institution")}
               </p>
             </motion.div>
           </motion.div>

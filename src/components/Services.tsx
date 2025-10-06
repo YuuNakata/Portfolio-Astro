@@ -24,82 +24,93 @@ import {
   UserCheck,
 } from "lucide-react";
 
+// Define services array outside component to prevent recreation on every render
+const servicesData = [
+  {
+    id: "business",
+    icon: Store,
+    titleKey: "services.business.title",
+    descriptionKey: "services.business.description",
+    benefits: [
+      "services.business.benefit1",
+      "services.business.benefit2",
+      "services.business.benefit3",
+    ],
+    color: "from-blue-500 to-cyan-500",
+    bgColor: "bg-blue-500/10",
+    duration: 12000, // 12 segundos - tiene mucho contenido visual
+  },
+  {
+    id: "ecommerce",
+    icon: ShoppingCart,
+    titleKey: "services.ecommerce.title",
+    descriptionKey: "services.ecommerce.description",
+    benefits: [
+      "services.ecommerce.benefit1",
+      "services.ecommerce.benefit2",
+      "services.ecommerce.benefit3",
+    ],
+    color: "from-purple-500 to-pink-500",
+    bgColor: "bg-purple-500/10",
+    duration: 14000, // 14 segundos - demo de tienda con productos
+  },
+  {
+    id: "booking",
+    icon: Calendar,
+    titleKey: "services.booking.title",
+    descriptionKey: "services.booking.description",
+    benefits: [
+      "services.booking.benefit1",
+      "services.booking.benefit2",
+      "services.booking.benefit3",
+    ],
+    color: "from-green-500 to-emerald-500",
+    bgColor: "bg-green-500/10",
+    duration: 13000, // 13 segundos - sistema de reservas interactivo
+  },
+  {
+    id: "management",
+    icon: Users,
+    titleKey: "services.management.title",
+    descriptionKey: "services.management.description",
+    benefits: [
+      "services.management.benefit1",
+      "services.management.benefit2",
+      "services.management.benefit3",
+    ],
+    color: "from-orange-500 to-red-500",
+    bgColor: "bg-orange-500/10",
+    duration: 13000, // 13 segundos - dashboard con métricas
+  },
+];
+
 const Services = () => {
   const { t } = useLanguage();
   const [activeSlide, setActiveSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
-  const services = [
-    {
-      id: "business",
-      icon: Store,
-      titleKey: "services.business.title",
-      descriptionKey: "services.business.description",
-      benefits: [
-        "services.business.benefit1",
-        "services.business.benefit2",
-        "services.business.benefit3",
-      ],
-      color: "from-blue-500 to-cyan-500",
-      bgColor: "bg-blue-500/10",
-    },
-    {
-      id: "ecommerce",
-      icon: ShoppingCart,
-      titleKey: "services.ecommerce.title",
-      descriptionKey: "services.ecommerce.description",
-      benefits: [
-        "services.ecommerce.benefit1",
-        "services.ecommerce.benefit2",
-        "services.ecommerce.benefit3",
-      ],
-      color: "from-purple-500 to-pink-500",
-      bgColor: "bg-purple-500/10",
-    },
-    {
-      id: "booking",
-      icon: Calendar,
-      titleKey: "services.booking.title",
-      descriptionKey: "services.booking.description",
-      benefits: [
-        "services.booking.benefit1",
-        "services.booking.benefit2",
-        "services.booking.benefit3",
-      ],
-      color: "from-green-500 to-emerald-500",
-      bgColor: "bg-green-500/10",
-    },
-    {
-      id: "management",
-      icon: Users,
-      titleKey: "services.management.title",
-      descriptionKey: "services.management.description",
-      benefits: [
-        "services.management.benefit1",
-        "services.management.benefit2",
-        "services.management.benefit3",
-      ],
-      color: "from-orange-500 to-red-500",
-      bgColor: "bg-orange-500/10",
-    },
-  ];
-
+  // Timing dinámico basado en el contenido de cada servicio
   useEffect(() => {
     if (isPaused) return;
 
-    const timer = setInterval(() => {
-      setActiveSlide((prev) => (prev + 1) % services.length);
-    }, 5000);
+    // Obtener la duración del servicio actual
+    const currentDuration = servicesData[activeSlide].duration;
 
-    return () => clearInterval(timer);
-  }, [isPaused, services.length]);
+    const timer = setTimeout(() => {
+      setActiveSlide((prev) => (prev + 1) % servicesData.length);
+    }, currentDuration);
+
+    return () => clearTimeout(timer);
+  }, [isPaused, activeSlide]); // Incluir activeSlide para actualizar el timer
 
   const nextSlide = () => {
-    setActiveSlide((prev) => (prev + 1) % services.length);
+    setActiveSlide((prev) => (prev + 1) % servicesData.length);
   };
 
   const prevSlide = () => {
-    setActiveSlide((prev) => (prev - 1 + services.length) % services.length);
+    setActiveSlide(
+      (prev) => (prev - 1 + servicesData.length) % servicesData.length,
+    );
   };
 
   const features = [
@@ -515,7 +526,7 @@ const Services = () => {
     management: ManagementDemo,
   };
 
-  const currentService = services[activeSlide];
+  const currentService = servicesData[activeSlide];
   const DemoComponent = demoComponents[currentService.id];
 
   return (
@@ -606,7 +617,7 @@ const Services = () => {
                 </motion.button>
 
                 <div className="flex gap-2">
-                  {services.map((_, idx) => (
+                  {servicesData.map((_, idx) => (
                     <motion.button
                       key={idx}
                       onClick={() => setActiveSlide(idx)}
@@ -633,10 +644,13 @@ const Services = () => {
 
             <motion.div
               key={`demo-${activeSlide}`}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.5 }}
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -50 }}
+              transition={{
+                duration: 0.6,
+                ease: [0.43, 0.13, 0.23, 0.96], // easeInOutQuart para transición más suave
+              }}
               className="relative"
             >
               <div className="aspect-square max-w-lg mx-auto">

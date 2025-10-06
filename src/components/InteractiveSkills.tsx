@@ -24,7 +24,7 @@ interface InteractiveDemo {
 }
 
 const InteractiveSkills: React.FC = () => {
-  useLanguage();
+  const { t } = useLanguage();
   const sectionRef = React.useRef<HTMLElement>(null);
   const { hasIntersected } = useIntersectionObserver(sectionRef, {
     threshold: 0.1,
@@ -465,11 +465,11 @@ const InteractiveSkills: React.FC = () => {
 
       // Simulate query execution with steps
       const steps = [
-        { progress: 20, message: "Parsing query..." },
-        { progress: 40, message: "Optimizing execution plan..." },
-        { progress: 60, message: "Applying indexes..." },
-        { progress: 80, message: "Fetching data..." },
-        { progress: 100, message: "Formatting results..." },
+        { progress: 20, message: t("skills.demo.query.parsing") },
+        { progress: 40, message: t("skills.demo.query.optimizing") },
+        { progress: 60, message: t("skills.demo.query.indexing") },
+        { progress: 80, message: t("skills.demo.query.fetching") },
+        { progress: 100, message: t("skills.demo.query.formatting") },
       ];
 
       for (const step of steps) {
@@ -603,40 +603,43 @@ const InteractiveSkills: React.FC = () => {
     );
   };
 
-  const demos: InteractiveDemo[] = [
-    {
-      id: "responsive",
-      title: "Responsive Design",
-      description: "Watch the magic of responsive design in action",
-      icon: <Smartphone className="w-5 h-5" />,
-      color: "from-blue-500 to-indigo-600",
-      component: <ResponsiveDemo />,
-    },
-    {
-      id: "algorithms",
-      title: "Algorithm Visualization",
-      description: "See sorting algorithms come to life",
-      icon: <Code className="w-5 h-5" />,
-      color: "from-purple-500 to-pink-600",
-      component: <AlgorithmDemo />,
-    },
-    {
-      id: "performance",
-      title: "Performance Optimization",
-      description: "Experience the impact of optimization",
-      icon: <Zap className="w-5 h-5" />,
-      color: "from-green-500 to-emerald-600",
-      component: <PerformanceDemo />,
-    },
-    {
-      id: "database",
-      title: "Database Queries",
-      description: "Optimized SQL queries in real-time",
-      icon: <Database className="w-5 h-5" />,
-      color: "from-indigo-500 to-blue-600",
-      component: <DatabaseDemo />,
-    },
-  ];
+  const demos: InteractiveDemo[] = React.useMemo(
+    () => [
+      {
+        id: "responsive",
+        title: t("skills.demo.responsive.title"),
+        description: t("skills.demo.responsive.description"),
+        icon: <Smartphone className="w-5 h-5" />,
+        color: "from-blue-500 to-indigo-600",
+        component: <ResponsiveDemo />,
+      },
+      {
+        id: "algorithms",
+        title: t("skills.demo.algorithms.title"),
+        description: t("skills.demo.algorithms.description"),
+        icon: <Code className="w-5 h-5" />,
+        color: "from-purple-500 to-pink-600",
+        component: <AlgorithmDemo />,
+      },
+      {
+        id: "performance",
+        title: t("skills.demo.performance.title"),
+        description: t("skills.demo.performance.description"),
+        icon: <Zap className="w-5 h-5" />,
+        color: "from-green-500 to-emerald-600",
+        component: <PerformanceDemo />,
+      },
+      {
+        id: "database",
+        title: t("skills.demo.database.title"),
+        description: t("skills.demo.database.description"),
+        icon: <Database className="w-5 h-5" />,
+        color: "from-indigo-500 to-blue-600",
+        component: <DatabaseDemo />,
+      },
+    ],
+    [t],
+  );
 
   return (
     <section
