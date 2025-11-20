@@ -1,11 +1,11 @@
 import { easeInOut, easeOut, motion } from "framer-motion";
 import {
+  Code2,
+  Database,
   Download,
   ExternalLink,
-  Code2,
-  Zap,
-  Database,
   Rocket,
+  Zap,
 } from "lucide-react";
 import React from "react";
 import { useLanguage } from "../contexts/LanguageContext";
@@ -221,8 +221,8 @@ const Hero: React.FC<HeroProps> = ({ avatarSrc }) => {
             <motion.a
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              href="/resume.pdf"
-              download="Raydel_Ernesto_Reuco_Garcia_Resume.pdf"
+              href="/CV_Raydel_E_Reuco.pdf"
+              download="CV_Raydel_E_Reuco.pdf"
               className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-green-600 to-blue-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 group"
             >
               <Download className="w-5 h-5 group-hover:translate-y-1 transition-transform duration-300" />

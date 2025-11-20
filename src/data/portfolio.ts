@@ -20,7 +20,7 @@ export const portfolioData: PortfolioData = {
       degree: "Ingeniería",
       field: "Ingeniería informática",
       institution: "Universidad de las Ciencias Informáticas",
-      startDate: "01/2023",
+      startDate: "02/2023",
       endDate: "07/2026",
       description:
         "Currently pursuing a degree in Computer Engineering with focus on software development, database management, and modern programming practices.",

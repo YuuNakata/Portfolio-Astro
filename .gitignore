@@ -27,6 +27,10 @@ build/
 *.swo
 *~
 
+# Data
+
+*.pdf
+
 # OS
 .DS_Store
 .DS_Store?

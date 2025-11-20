@@ -5,7 +5,6 @@ import {
   Brain,
   Building,
   Calendar,
-  CheckCircle,
   Clock,
   GraduationCap,
   Star,
@@ -396,7 +395,7 @@ const Education: React.FC = () => {
               <div className="flex items-center justify-center mb-2">
                 <Calendar className="w-6 h-6 text-blue-600 dark:text-blue-400 mr-2" />
                 <span className="text-3xl font-bold text-blue-600 dark:text-blue-400">
-                  2022-2026
+                  2023-2026
                 </span>
               </div>
               <p className="text-gray-600 dark:text-gray-400 text-sm">
