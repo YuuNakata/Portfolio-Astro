@@ -221,7 +221,7 @@ const Hero: React.FC<HeroProps> = ({ avatarSrc }) => {
             <motion.a
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              href="/CV-Raydel-Ernesto-Reuco.pdf"
+              href="/files/CV-Raydel-Ernesto-Reuco.pdf"
               download="CV-Raydel-Ernesto-Reuco.pdf"
               className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-green-600 to-blue-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 group"
             >

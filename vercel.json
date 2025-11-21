@@ -106,7 +106,7 @@
   ],
   "rewrites": [
     {
-      "source": "/((?!api/).*)",
+      "source": "/((?!api/|files/).*)",
       "destination": "/index.html"
     }
   ],
