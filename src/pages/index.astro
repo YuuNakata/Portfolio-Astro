@@ -1,4 +1,73 @@
 ---
 import { defaultLang } from '../i18n/ui';
-return Astro.redirect(`/${defaultLang}/`);
+const redirectUrl = `/${defaultLang}/`;
 ---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="0;url={redirectUrl}">
+    <meta name="theme-color" content="#050505">
+    <title>Loading...</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #050505;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Courier New', monospace;
+            color: #22d3ee;
+        }
+        
+        .loader {
+            text-align: center;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #22d3ee20;
+            border-top-color: #22d3ee;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        
+        .text {
+            font-size: 12px;
+            letter-spacing: 2px;
+            opacity: 0.8;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="loader">
+        <div class="spinner"></div>
+        <div class="text">INITIALIZING_</div>
+    </div>
+    
+    <script define:vars={{ redirectUrl }}>
+        // Immediate redirect via JavaScript (faster than meta refresh)
+        window.location.replace(redirectUrl);
+    </script>
+</body>
+</html>
