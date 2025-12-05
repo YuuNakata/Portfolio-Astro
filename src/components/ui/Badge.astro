@@ -1,0 +1,16 @@
+---
+interface Props {
+  text: string;
+  variant?: 'primary' | 'secondary' | 'outline';
+}
+const { text, variant = 'outline' } = Astro.props;
+
+const styles = {
+  primary: 'bg-primary/10 text-primary border-primary/50',
+  secondary: 'bg-secondary/10 text-secondary border-secondary/50',
+  outline: 'bg-surface border-muted text-muted-foreground hover:border-foreground',
+};
+---
+<span class={`px-2 py-1 text-xs border ${styles[variant]} font-mono uppercase tracking-wider`}>
+  {text}
+</span>

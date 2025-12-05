@@ -1,0 +1,87 @@
+---
+import { Home, FolderGit2, User, Mail } from 'lucide-react';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const currentPath = Astro.url.pathname;
+
+const links = [
+    { label: t('nav.home'), path: `/${lang}/`, icon: Home, hotkey: '1' },
+    { label: t('nav.projects'), path: `/${lang}/projects`, icon: FolderGit2, hotkey: '2' },
+    { label: t('nav.about'), path: `/${lang}/about`, icon: User, hotkey: '3' },
+    { label: t('nav.contact'), path: `/${lang}/contact`, icon: Mail, hotkey: '4' },
+];
+---
+
+<nav class="fixed bottom-0 left-0 w-full z-50 pointer-events-none pb-8">
+    <div class="flex items-center justify-between px-8 md:px-24 mx-auto max-w-4xl pointer-events-auto">
+        
+        {links.map((link) => {
+            const isActive = currentPath === link.path || (link.path !== '/' && currentPath.startsWith(link.path));
+            return (
+                <a 
+                    href={link.path}
+                    data-astro-prefetch
+                    class={`cyber-btn relative group flex flex-col items-center justify-center w-20 h-14 md:w-28 md:h-16 transition-all duration-200 clip-path-cyber
+                    ${isActive ? 'bg-primary/20 text-primary border-primary' : 'bg-black/80 text-muted border-white/10 hover:text-white hover:bg-white/10'}`}
+                >
+                    <!-- Borders explicitly for the "tech" look -->
+                    <div class={`absolute inset-0 border border-current opacity-50 ${isActive ? 'opacity-100' : 'group-hover:opacity-80'}`} style="clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);"></div>
+
+                    <!-- Icono -->
+                    <link.icon size={20} className={`z-10 transition-transform duration-300 ${isActive ? 'scale-110 drop-shadow-[0_0_5px_rgba(34,211,238,0.8)]' : 'group-hover:scale-110'}`} />
+                    
+                    <!-- Label interior (estilo tech) -->
+                    <span class="z-10 text-[10px] font-pixel mt-1 tracking-widest opacity-80 group-hover:opacity-100">
+                        {link.label}
+                    </span>
+
+                    <!-- Decorative corner accents -->
+                    {isActive && (
+                        <>
+                            <span class="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-primary"></span>
+                            <span class="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-primary"></span>
+                        </>
+                    )}
+                </a>
+            )
+        })}
+    </div>
+</nav>
+
+<script>
+    // Crash prevention: Debounce clicks
+    const navLinks = document.querySelectorAll('.cyber-btn');
+    let isNavigating = false;
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            if (isNavigating) {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            }
+            
+            // Allow navigation but lock subsequent clicks briefly
+            isNavigating = true;
+            
+            // Unlock after a timeout (fallback) or when the new page loads
+            setTimeout(() => {
+                isNavigating = false;
+            }, 1000); // 1 second cooldown
+        });
+    });
+
+    // Reset on page load (for view transitions)
+    document.addEventListener('astro:page-load', () => {
+        isNavigating = false;
+    });
+</script>
+
+<style>
+    .clip-path-cyber {
+        clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+    }
+</style>

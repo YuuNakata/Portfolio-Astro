@@ -1,1 +1,131 @@
 @import "tailwindcss";
+
+/* Fuentes */
+@import "@fontsource/silkscreen";
+@import "@fontsource/jetbrains-mono";
+
+/* Fuente personalizada Vergilia */
+@font-face {
+  font-family: "Vergilia";
+  src: url("/fonts/vergilia.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Tailwind v4 Theme Configuration */
+@theme {
+  --font-pixel: "Silkscreen", cursive;
+  --font-pixel-serif: "Vergilia", serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-background: #050505;
+  --color-surface: #0a0a0a;
+  --color-primary: #22d3ee;
+  --color-secondary: #c084fc;
+  --color-muted: #525252;
+}
+
+:root {
+  --color-background: #050505;
+  --color-surface: #0a0a0a;
+  --color-primary: #22d3ee; /* Cyan Tóxico */
+  --color-secondary: #c084fc; /* Purple Moe */
+  --color-muted: #525252;
+
+  --font-pixel: "Silkscreen", cursive;
+  --font-pixel-serif: "Vergilia", serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --animate-glitch: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both
+    infinite;
+
+  @keyframes glitch {
+    0% {
+      transform: translate(0);
+    }
+    20% {
+      transform: translate(-2px, 2px);
+    }
+    40% {
+      transform: translate(-2px, -2px);
+    }
+    60% {
+      transform: translate(2px, 2px);
+    }
+    80% {
+      transform: translate(2px, -2px);
+    }
+    100% {
+      transform: translate(0);
+    }
+  }
+}
+
+/* Scrollbar invisible pero funcional (estilo app) */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+/* Page Transitions: Glitch Effect */
+
+/* Page Transitions: Glitch Effect */
+@keyframes glitch-enter {
+  0% {
+    opacity: 0;
+    clip-path: inset(50% 0 50% 0);
+    transform: scale(1.2) translate(-10px, 10px);
+    filter: invert(1) drop-shadow(0 0 10px white);
+  }
+  20% {
+    clip-path: inset(10% 0 80% 0);
+    transform: translate(-10px, 5px) skewX(10deg);
+    filter: hue-rotate(90deg) contrast(2) brightness(1.5);
+  }
+  40% {
+    clip-path: inset(80% 0 10% 0);
+    transform: translate(10px, -5px) skewX(-10deg);
+    filter: invert(0.5);
+  }
+  60% {
+    clip-path: inset(10% 0 60% 0);
+    transform: translate(-5px, 10px);
+    filter: sepia(1) saturate(3);
+  }
+  80% {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+    transform: none;
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    opacity: 1;
+    clip-path: inset(0);
+    transform: none;
+    filter: none;
+  }
+}
+
+@keyframes glitch-exit {
+  0% {
+    opacity: 1;
+    transform: none;
+  }
+  20% {
+    clip-path: inset(0% 0 50% 0);
+    transform: translate(5px, -5px) skewY(5deg);
+    filter: grayscale(1) brightness(2) drop-shadow(0 0 5px white);
+  }
+  40% {
+    clip-path: inset(60% 0 0% 0);
+    transform: translate(-5px, 5px) skewY(-5deg);
+    filter: invert(0.8);
+  }
+  100% {
+    opacity: 0;
+    clip-path: inset(50% 0 50% 0);
+    transform: scale(0.9) skewX(20deg);
+    filter: blur(5px);
+  }
+}

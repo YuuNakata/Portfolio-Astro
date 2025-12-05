@@ -1,0 +1,74 @@
+---
+import { Github, Linkedin, Mail } from 'lucide-react';
+import CyberNav from '../../components/CyberNav.astro';
+import LanguagePicker from '../../components/LanguagePicker.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import Layout from '../../layouts/Layout.astro';
+
+export function getStaticPaths() {
+  return [
+    {params: {lang: 'es'}},
+    {params: {lang: 'en'}},
+  ];
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout title={`Raydel Reuco | ${t('nav.contact')}`}>
+    <!-- Language Picker -->
+    <LanguagePicker />
+
+    <div class="flex flex-col items-center justify-center h-full max-w-3xl mx-auto w-full relative">
+        
+        <header class="text-center mb-12">
+             <h2 class="font-pixel text-3xl text-white mb-2">{t('contact.title')}</h2>
+             <p class="text-muted text-xs font-mono">{t('contact.subtitle')}</p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full px-8">
+
+            <!-- Email (Primary) -->
+            <a href="mailto:raidel.reuco@gmail.com" class="group relative block bg-primary/5 border border-primary/20 hover:bg-primary/20 hover:border-primary transition-all duration-300 h-40 overflow-hidden">
+                <div class="absolute inset-0 flex flex-col items-center justify-center z-10">
+                    <Mail size={48} className="text-primary mb-4 group-hover:scale-110 transition-transform" />
+                    <span class="font-pixel text-sm text-primary">{t('contact.email')}</span>
+                    <span class="text-[10px] text-primary/70 font-mono mt-1 group-hover:opacity-100 opacity-60">raidel.reuco@gmail.com</span>
+                </div>
+                <!-- Background decoration -->
+                <div class="absolute bottom-0 left-0 w-full h-1 bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+                <!-- Corner -->
+                <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-primary opacity-50"></div>
+            </a>
+
+            <!-- LinkedIn -->
+            <a href="https://linkedin.com/in/raydel-ernesto-reuco" target="_blank" class="group relative block bg-secondary/5 border border-secondary/20 hover:bg-secondary/20 hover:border-secondary transition-all duration-300 h-40 overflow-hidden">
+                <div class="absolute inset-0 flex flex-col items-center justify-center z-10">
+                    <Linkedin size={48} className="text-secondary mb-4 group-hover:scale-110 transition-transform" />
+                    <span class="font-pixel text-sm text-secondary">{t('contact.linkedin')}</span>
+                     <span class="text-[10px] text-secondary/70 font-mono mt-1 group-hover:opacity-100 opacity-60">Professional Profile</span>
+                </div>
+                 <!-- Background decoration -->
+                 <div class="absolute bottom-0 left-0 w-full h-1 bg-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+                 <!-- Corner -->
+                <div class="absolute top-0 right-0 w-2 h-2 border-t border-r border-secondary opacity-50"></div>
+            </a>
+
+            <!-- Github -->
+            <a href="https://github.com/YuuNakata" target="_blank" class="group relative block bg-white/5 border border-white/20 hover:bg-white/20 hover:border-white transition-all duration-300 h-40 overflow-hidden">
+                <div class="absolute inset-0 flex flex-col items-center justify-center z-10">
+                    <Github size={48} className="text-white mb-4 group-hover:scale-110 transition-transform" />
+                    <span class="font-pixel text-sm text-white">{t('contact.github')}</span>
+                     <span class="text-[10px] text-white/70 font-mono mt-1 group-hover:opacity-100 opacity-60">Source Codes</span>
+                </div>
+                 <!-- Background decoration -->
+                 <div class="absolute bottom-0 left-0 w-full h-1 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+            </a>
+
+        </div>
+
+    </div>
+
+    <CyberNav slot="nav" />
+</Layout>

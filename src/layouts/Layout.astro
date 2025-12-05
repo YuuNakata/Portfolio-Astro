@@ -1,0 +1,62 @@
+---
+import { ClientRouter } from 'astro:transitions'; // Navegación tipo SPA en multi-page
+import BaseHead from '../components/BaseHead.astro';
+import PixelBackground from '../components/PixelBackground';
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+
+const { title, description = "System Online" } = Astro.props;
+
+const glitchAnim = {
+  old: {
+    name: 'glitch-exit',
+    duration: '0.4s',
+    easing: 'steps(3)',
+  },
+  new: {
+    name: 'glitch-enter',
+    duration: '0.4s',
+    easing: 'steps(3)',
+  }
+};
+
+const customTransition = {
+  forwards: glitchAnim,
+  backwards: glitchAnim,
+};
+---
+
+<!doctype html>
+<html lang="es" class="dark"> <!-- Forzamos modo oscuro -->
+	<head>
+		<BaseHead title={title} description={description} />
+		<ClientRouter /> <!-- Magia de transiciones -->
+	</head>
+	
+    <!-- bg-black forzado para eliminar el blanco -->
+	<body class="bg-[#050505] text-[#e5e5e5] font-mono antialiased overflow-hidden h-screen w-screen selection:bg-[#22d3ee] selection:text-black">
+		
+		<!-- Fondo persistente (No recarga al cambiar página) -->
+		<div transition:persist class="fixed inset-0 z-0">
+			<PixelBackground client:load />
+            <!-- Efecto Scanlines (CRT) GRITTY/LOW-RES -->
+            <div class="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-[1] bg-[length:100%_4px,6px_100%] pointer-events-none"></div>
+             <!-- Vignette (Bordes oscuros) -->
+            <div class="absolute inset-0 bg-radial-[circle_at_center,transparent_50%,rgba(0,0,0,0.6)_100%] z-[2] pointer-events-none"></div>
+		</div>
+
+		<!-- Contenedor Principal con animación de entrada custom -->
+		<main class="relative z-10 w-full h-full flex flex-col p-6 md:p-12 overflow-y-auto" transition:animate={customTransition}>
+			<slot />
+		</main>
+
+        <!-- Aquí irá nuestra navegación única -->
+        <slot name="nav" />
+
+	</body>
+</html>

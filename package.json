@@ -1,114 +1,30 @@
 {
-  "name": "portfolio-raydel",
-  "version": "1.0.0",
+  "name": "frontend",
   "type": "module",
-  "description": "Modern portfolio website for Raydel Ernesto Reuco García - Full Stack Developer specializing in web applications, databases, and game development",
-  "keywords": [
-    "portfolio",
-    "developer",
-    "full-stack",
-    "astro",
-    "react",
-    "tailwind",
-    "typescript",
-    "supabase",
-    "cuba",
-    "computer-engineering",
-    "web-development",
-    "responsive",
-    "multilingual"
-  ],
-  "author": {
-    "name": "Raydel Ernesto Reuco García",
-    "email": "raydel.reuco@gmail.com",
-    "url": "https://raydel-portfolio.vercel.app"
-  },
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/raydel-reuco/portfolio-raydel.git"
-  },
-  "homepage": "https://raydel-portfolio.vercel.app",
-  "bugs": {
-    "url": "https://github.com/raydel-reuco/portfolio-raydel/issues"
-  },
-  "engines": {
-    "node": ">=18.0.0",
-    "pnpm": ">=8.0.0"
-  },
-  "packageManager": "pnpm@9.0.0",
+  "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev --host",
-    "start": "astro dev",
-    "favicon": "node generate-circular-favicon.mjs",
-    "build": "astro check && astro build",
-    "preview": "astro preview --host",
-    "astro": "astro",
-    "check": "astro check",
-    "sync": "astro sync",
-    "lint": "eslint src --ext .ts,.tsx,.astro --fix",
-    "lint:check": "eslint src --ext .ts,.tsx,.astro",
-    "format": "prettier --write \"src/**/*.{ts,tsx,astro,js,jsx,md,json}\"",
-    "format:check": "prettier --check \"src/**/*.{ts,tsx,astro,js,jsx,md,json}\"",
-    "type-check": "tsc --noEmit",
-    "test": "echo \"Tests not yet implemented\"",
-    "clean": "rm -rf dist .astro node_modules/.cache",
-    "clean:install": "pnpm clean && pnpm install",
-    "analyze": "pnpm build && npx astro-bundle-analyzer",
-    "postbuild": "echo \"Build completed successfully! 🚀\"",
-    "deploy": "vercel --prod",
-    "deploy:preview": "vercel",
-    "prepare": "pnpm sync"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.4",
-    "@astrojs/react": "^4.3.1",
-    "@astrojs/vercel": "^8.2.8",
-    "@supabase/supabase-js": "^2.57.4",
-    "@types/react": "^19.1.13",
-    "@types/react-dom": "^19.1.9",
-    "astro": "^5.13.9",
-    "framer-motion": "^12.23.16",
-    "lucide-react": "^0.544.0",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "react-icons": "^5.5.0",
-    "sharp": "^0.33.5"
-  },
-  "devDependencies": {
+    "@astrojs/react": "^4.4.2",
     "@astrojs/sitemap": "^3.6.0",
-    "@astrojs/tailwind": "^6.0.2",
-    "@tailwindcss/aspect-ratio": "^0.4.2",
-    "@tailwindcss/container-queries": "^0.1.1",
-    "@tailwindcss/forms": "^0.5.10",
-    "@tailwindcss/typography": "^0.5.18",
-    "@typescript-eslint/eslint-plugin": "^6.21.0",
-    "@typescript-eslint/parser": "^6.21.0",
-    "astro-compress": "^2.3.8",
-    "astro-robots-txt": "^1.0.0",
-    "autoprefixer": "^10.4.21",
-    "eslint": "^8.57.0",
-    "eslint-plugin-astro": "^0.31.4",
-    "eslint-plugin-jsx-a11y": "^6.8.0",
-    "eslint-plugin-react": "^7.33.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "postcss": "^8.5.6",
-    "prettier": "^3.2.5",
-    "prettier-plugin-astro": "^0.13.0",
-    "tailwindcss": "^3.4.0",
-    "typescript": "^5.9.2",
-    "vercel": "^33.5.5"
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead",
-    "not ie 11"
-  ],
-  "pnpm": {
-    "overrides": {
-      "@types/react": "^19.1.13",
-      "@types/react-dom": "^19.1.9"
-    }
+    "@fontsource/jetbrains-mono": "^5.2.8",
+    "@fontsource/silkscreen": "^5.2.8",
+    "@iconify-json/simple-icons": "^1.2.61",
+    "@tailwindcss/vite": "^4.1.17",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "astro": "^5.16.4",
+    "astro-icon": "^1.1.5",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.555.0",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1",
+    "sharp": "^0.34.5",
+    "tailwind-merge": "^3.4.0",
+    "tailwindcss": "^4.1.17"
   }
 }

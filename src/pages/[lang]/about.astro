@@ -1,0 +1,309 @@
+---
+import { Icon } from 'astro-icon/components';
+import CyberNav from '../../components/CyberNav.astro';
+import LanguagePicker from '../../components/LanguagePicker.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import Layout from '../../layouts/Layout.astro';
+
+export function getStaticPaths() {
+  return [
+    {params: {lang: 'es'}},
+    {params: {lang: 'en'}},
+  ];
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout title={`Raydel Reuco | ${t('nav.about')}`}>
+    <!-- Language Picker -->
+    <LanguagePicker />
+
+    <div class="max-w-4xl mx-auto w-full pt-6 md:pt-10 pb-32 px-4 md:px-0">
+        <header class="mb-6 md:mb-8 border-b border-white/10 pb-4">
+            <h2 class="font-pixel text-xl md:text-3xl text-secondary">/USER_DIR/PROFILE</h2>
+            <p class="text-muted text-[10px] md:text-xs font-mono mt-1">> {t('about.subtitle')}</p>
+            <!-- Real Name Display -->
+            <h1 class="text-2xl md:text-4xl lg:text-5xl font-bold mt-3 md:mt-4 text-white tracking-wider md:tracking-widest uppercase font-pixel-serif">
+                RAYDEL ERNESTO <span class="text-transparent bg-clip-text bg-linear-to-r from-primary to-secondary">REUCO GARCÍA</span>
+            </h1>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            
+            <!-- Columna Izquierda: Skills divididas en 4 secciones -->
+            <div class="md:col-span-1 space-y-3 md:space-y-4">
+                
+                <!-- LANGUAGES -->
+                <div class="bg-black/40 border border-white/10 p-3 md:p-4 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-3 h-3 bg-primary/20 rounded-bl-lg"></div>
+                    <h3 class="font-pixel text-primary text-[10px] mb-3 md:mb-4">LANGUAGES</h3>
+                    <div class="grid grid-cols-4 gap-3 md:gap-4">
+                        <div class="skill-item" data-skill="Python" data-color="#3776AB">
+                            <Icon name="simple-icons:python" class="skill-icon w-7 h-7 md:w-8 md:h-8 text-[#3776AB]" />
+                            <span class="skill-label">Python</span>
+                        </div>
+                        <div class="skill-item" data-skill="C#" data-color="#512BD4">
+                            <Icon name="simple-icons:csharp" class="skill-icon w-7 h-7 md:w-8 md:h-8 text-[#512BD4]" />
+                            <span class="skill-label">C#</span>
+                        </div>
+                        <div class="skill-item" data-skill="TypeScript" data-color="#3178C6">
+                            <Icon name="simple-icons:typescript" class="skill-icon w-7 h-7 md:w-8 md:h-8 text-[#3178C6]" />
+                            <span class="skill-label">TS</span>
+                        </div>
+                        <div class="skill-item" data-skill="JavaScript" data-color="#F7DF1E">
+                            <Icon name="simple-icons:javascript" class="skill-icon w-7 h-7 md:w-8 md:h-8 text-[#F7DF1E]" />
+                            <span class="skill-label">JS</span>
+                        </div>
+                        <div class="skill-item" data-skill="Java" data-color="#FFFFFF">
+                            <Icon name="simple-icons:openjdk" class="skill-icon w-7 h-7 md:w-8 md:h-8 text-white" />
+                            <span class="skill-label">Java</span>
+                        </div>
+                        <div class="skill-item" data-skill="Kotlin" data-color="#7F52FF">
+                            <Icon name="simple-icons:kotlin" class="skill-icon w-7 h-7 md:w-8 md:h-8 text-[#7F52FF]" />
+                            <span class="skill-label">Kotlin</span>
+                        </div>
+                        <div class="skill-item" data-skill="C++" data-color="#00599C">
+                            <Icon name="simple-icons:cplusplus" class="skill-icon w-7 h-7 md:w-8 md:h-8 text-[#00599C]" />
+                            <span class="skill-label">C++</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LIBS / FRAMEWORKS -->
+                <div class="bg-black/40 border border-white/10 p-3 md:p-4 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-3 h-3 bg-secondary/20 rounded-bl-lg"></div>
+                    <h3 class="font-pixel text-secondary text-[10px] mb-3 md:mb-4">LIBS_&_FRAMEWORKS</h3>
+                    <div class="grid grid-cols-5 md:grid-cols-4 gap-3 md:gap-4">
+                        <div class="skill-item" data-skill="Django" data-color="#FFFFFF">
+                            <Icon name="simple-icons:django" class="skill-icon w-7 h-7 md:w-8 md:h-8 text-[#092E20]" />
+                            <span class="skill-label">Django</span>
+                        </div>
+                        <div class="skill-item" data-skill=".NET" data-color="#512BD4">
+                            <Icon name="simple-icons:dotnet" class="skill-icon w-7 h-7 md:w-8 md:h-8 text-[#512BD4]" />
+                            <span class="skill-label">.NET</span>
+                        </div>
+                        <div class="skill-item" data-skill="React" data-color="#61DAFB">
+                            <Icon name="simple-icons:react" class="skill-icon w-7 h-7 md:w-8 md:h-8 text-[#61DAFB]" />
+                            <span class="skill-label">React</span>
+                        </div>
+                        <div class="skill-item" data-skill="Astro" data-color="#FF5D01">
+                            <Icon name="simple-icons:astro" class="skill-icon w-7 h-7 md:w-8 md:h-8 text-[#FF5D01]" />
+                            <span class="skill-label">Astro</span>
+                        </div>
+                        <div class="skill-item" data-skill="Tailwind" data-color="#06B6D4">
+                            <Icon name="simple-icons:tailwindcss" class="skill-icon w-7 h-7 md:w-8 md:h-8 text-[#06B6D4]" />
+                            <span class="skill-label">TW</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DATABASES -->
+                <div class="bg-black/40 border border-white/10 p-3 md:p-4 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-3 h-3 bg-white/20 rounded-bl-lg"></div>
+                    <h3 class="font-pixel text-white text-[10px] mb-3 md:mb-4">DATABASES</h3>
+                    <div class="grid grid-cols-2 gap-3 md:gap-4">
+                        <div class="skill-item" data-skill="PostgreSQL" data-color="#4169E1">
+                            <Icon name="simple-icons:postgresql" class="skill-icon w-7 h-7 md:w-8 md:h-8 text-[#4169E1]" />
+                            <span class="skill-label">Postgres</span>
+                        </div>
+                        <div class="skill-item" data-skill="SQL Server" data-color="#CC2927">
+                            <Icon name="simple-icons:microsoftsqlserver" class="skill-icon w-7 h-7 md:w-8 md:h-8 text-[#CC2927]" />
+                            <span class="skill-label">SQL Srv</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TOOLS -->
+                <div class="bg-black/40 border border-white/10 p-3 md:p-4 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-3 h-3 bg-primary/20 rounded-bl-lg"></div>
+                    <h3 class="font-pixel text-primary text-[10px] mb-3 md:mb-4">TOOLS_&_SOFTWARE</h3>
+                    <div class="grid grid-cols-4 gap-3 md:gap-4">
+                        <div class="skill-item" data-skill="VS Code" data-color="#007ACC">
+                            <Icon name="simple-icons:visualstudiocode" class="skill-icon w-7 h-7 md:w-8 md:h-8 text-[#007ACC]" />
+                            <span class="skill-label">VSC</span>
+                        </div>
+                        <div class="skill-item" data-skill="Visual Studio" data-color="#5C2D91">
+                            <Icon name="simple-icons:visualstudio" class="skill-icon w-7 h-7 md:w-8 md:h-8 text-[#5C2D91]" />
+                            <span class="skill-label">VS</span>
+                        </div>
+                        <div class="skill-item" data-skill="Windows 11" data-color="#0078D4">
+                            <Icon name="simple-icons:windows11" class="skill-icon w-7 h-7 md:w-8 md:h-8 text-[#0078D4]" />
+                            <span class="skill-label">Win11</span>
+                        </div>
+                        <div class="skill-item" data-skill="Unity" data-color="#FFFFFF">
+                            <Icon name="simple-icons:unity" class="skill-icon w-7 h-7 md:w-8 md:h-8 text-white" />
+                            <span class="skill-label">Unity</span>
+                        </div>
+                        <div class="skill-item" data-skill="Godot" data-color="#478CBF">
+                            <Icon name="simple-icons:godotengine" class="skill-icon w-7 h-7 md:w-8 md:h-8 text-[#478CBF]" />
+                            <span class="skill-label">Godot</span>
+                        </div>
+                        <div class="skill-item" data-skill="Blender" data-color="#E87D0D">
+                            <Icon name="simple-icons:blender" class="skill-icon w-7 h-7 md:w-8 md:h-8 text-[#E87D0D]" />
+                            <span class="skill-label">Blender</span>
+                        </div>
+                        <div class="skill-item" data-skill="Git" data-color="#F05032">
+                            <Icon name="simple-icons:git" class="skill-icon w-7 h-7 md:w-8 md:h-8 text-[#F05032]" />
+                            <span class="skill-label">Git</span>
+                        </div>
+                        <div class="skill-item" data-skill="GitHub" data-color="#FFFFFF">
+                            <Icon name="simple-icons:github" class="skill-icon w-7 h-7 md:w-8 md:h-8 text-white" />
+                            <span class="skill-label">GitHub</span>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Human Languages -->
+                 <div class="bg-black/40 border border-white/10 p-3">
+                     <h3 class="font-pixel text-muted text-[10px] mb-3">{t('about.section.languages')}</h3>
+                     <div class="flex flex-wrap gap-2 text-xs font-mono">
+                         <span class="px-2 py-1 border border-primary/30 text-primary text-[9px]">ES (NATIVE)</span>
+                         <span class="px-2 py-1 border border-white/30 text-white text-[9px]">EN (B1 CERT)</span>
+                     </div>
+                 </div>
+            </div>
+
+            <!-- Columna Derecha: Experience Log -->
+            <div class="md:col-span-2 space-y-4 md:space-y-6">
+                
+                <h3 class="font-pixel text-lg md:text-xl text-white mb-2">> {t('about.section.experience')}</h3>
+
+                <div class="relative pl-6 md:pl-8 border-l border-dashed border-white/20 space-y-6 md:space-y-8 font-mono">
+                    
+                    <!-- Item 1 -->
+                    <div class="relative group">
+                        <div class="absolute -left-[29px] md:-left-[37px] top-0 w-3 h-3 md:w-4 md:h-4 bg-black border-2 border-primary rounded-full group-hover:scale-125 transition-transform"></div>
+                        <div class="text-[10px] md:text-xs text-primary mb-1">JAN 2024 - PRESENT</div>
+                        <h4 class="text-base md:text-lg font-bold text-white">{t('about.exp1.role')}</h4>
+                        <div class="text-[10px] md:text-xs text-muted mb-2">{t('about.exp1.place')}</div>
+                        <p class="text-[10px] md:text-xs text-gray-400 leading-relaxed bg-white/5 p-2 md:p-3 border-l-2 border-primary/50" set:html={t('about.exp1.desc')} />
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="relative group">
+                        <div class="absolute -left-[29px] md:-left-[37px] top-0 w-3 h-3 md:w-4 md:h-4 bg-black border-2 border-secondary rounded-full group-hover:scale-125 transition-transform"></div>
+                         <div class="text-[10px] md:text-xs text-secondary mb-1">2023 - 2024</div>
+                        <h4 class="text-base md:text-lg font-bold text-white">{t('about.exp2.role')}</h4>
+                        <div class="text-[10px] md:text-xs text-muted mb-2">{t('about.exp2.place')}</div>
+                        <p class="text-[10px] md:text-xs text-gray-400 leading-relaxed bg-white/5 p-2 md:p-3 border-l-2 border-secondary/50" set:html={t('about.exp2.desc')} />
+                    </div>
+
+                    <!-- Education -->
+                     <div class="relative group mt-8 md:mt-12">
+                         <div class="absolute -left-[29px] md:-left-[37px] top-0 w-3 h-3 md:w-4 md:h-4 bg-white border-2 border-white rounded-full group-hover:scale-125 transition-transform"></div>
+                         <div class="text-[10px] md:text-xs text-white mb-1">FEB 2023 - PRESENT</div>
+                        <h4 class="text-base md:text-lg font-bold text-white">{t('about.edu.role')}</h4>
+                        <div class="text-[10px] md:text-xs text-muted">{t('about.edu.place')}</div>
+                        <div class="mt-2 text-[9px] md:text-[10px] text-muted border border-white/10 inline-block px-2 py-1 font-pixel">
+                            {t('about.edu.status')}
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <CyberNav slot="nav" />
+</Layout>
+
+<style>
+    .skill-item {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        min-height: 2.5rem;
+    }
+    
+    .skill-icon {
+        transition: all 0.3s ease;
+    }
+    
+    .skill-label {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 9px;
+        font-family: monospace;
+        opacity: 0;
+        transform: scale(0.75);
+        transition: all 0.3s ease;
+        pointer-events: none;
+    }
+    
+    /* Desktop: hover effect */
+    @media (min-width: 768px) {
+        .skill-item:hover .skill-icon {
+            opacity: 0;
+            transform: scale(0.75);
+        }
+        
+        .skill-item:hover .skill-label {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .skill-item:hover {
+            z-index: 50;
+        }
+    }
+    
+    /* Active state for touch devices */
+    .skill-item.active .skill-icon {
+        opacity: 0;
+        transform: scale(0.75);
+    }
+    
+    .skill-item.active .skill-label {
+        opacity: 1;
+        transform: scale(1);
+    }
+</style>
+
+<script>
+    function initSkillItems() {
+        const skillItems = document.querySelectorAll('.skill-item');
+        
+        skillItems.forEach(item => {
+            const label = item.querySelector('.skill-label') as HTMLElement;
+            const color = item.getAttribute('data-color') || '#22d3ee';
+            
+            if (label) {
+                label.style.color = color;
+            }
+            
+            item.addEventListener('click', (e) => {
+                // Only activate click behavior on mobile/tablet sizes
+                if (window.innerWidth >= 768) return;
+                
+                e.preventDefault();
+                
+                // Remove active from all other items
+                skillItems.forEach(other => {
+                    if (other !== item) other.classList.remove('active');
+                });
+                
+                // Toggle active on this item
+                item.classList.add('active');
+                
+                // Remove after 2 seconds
+                setTimeout(() => {
+                    item.classList.remove('active');
+                }, 2000);
+            });
+        });
+    }
+    
+    // Run on page load and after view transitions
+    document.addEventListener('astro:page-load', initSkillItems);
+</script>
+

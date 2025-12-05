@@ -1,0 +1,132 @@
+---
+import { ArrowUpRight } from 'lucide-react';
+import CyberNav from '../../components/CyberNav.astro';
+import LanguagePicker from '../../components/LanguagePicker.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import Layout from '../../layouts/Layout.astro';
+
+export function getStaticPaths() {
+  return [
+    {params: {lang: 'es'}},
+    {params: {lang: 'en'}},
+  ];
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const projects = [
+  {
+    title: 'Exam Management',
+    role: 'Backend Arch',
+    desc: t('about.exp1.desc'), // Reusing proper desc if available or just hardcoded for now, wait I added specific project descs
+    desc_key: 'projects.desc.portfolio', // Placeholder, let's look at ui.ts
+    // In ui.ts I added: projects.desc.portfolio, moetasker, postbot, moogle
+    // The Exam Management one is actually "about.exp1" related but let's see.
+    // I missed adding a specific key for Exam Management in projects section of ui.ts but it is in 'about.exp1'.
+    // I will use a generic description or the one from about.
+    tags: ['Python', 'Docker', 'SQL'],
+    status: 'DEPLOYED'
+  },
+  {
+    title: 'Moogle! Engine',
+    role: '.NET Core',
+    desc_key: 'projects.desc.moogle',
+    tags: ['C#', 'Blazor', 'Math'],
+    status: 'OFFLINE'
+  },
+  {
+      title: 'Portfolio Astro',
+      role: 'Frontend',
+      desc_key: 'projects.desc.portfolio',
+      tags: ['Astro', 'React', 'Tailwind'],
+      status: 'ONLINE'
+  },
+  {
+      title: 'MoeTasker',
+      role: 'Full Stack',
+      desc_key: 'projects.desc.moetasker',
+      tags: ['Unknown', 'Task Management'],
+      status: 'DEV'
+  },
+  {
+      title: 'post_bot',
+      role: 'Automation',
+      desc_key: 'projects.desc.postbot',
+      tags: ['Python', 'Bot'],
+      status: 'OFFLINE'
+  },
+   {
+      title: 'moogle-clone',
+      role: 'Search Engine',
+      desc_key: 'projects.desc.moogle',
+      tags: ['C#', 'IR'],
+      status: 'ARCHIVED'
+  }
+];
+---
+
+<Layout title={`Raydel Reuco | ${t('nav.projects')}`}>
+    <!-- Language Picker -->
+    <LanguagePicker />
+
+    <div class="max-w-5xl mx-auto w-full pt-10 pb-32">
+        <header class="mb-12 border-b border-white/10 pb-4 flex justify-between items-end">
+            <div>
+                <h2 class="font-pixel text-3xl text-primary">/PROJECTS_DIR</h2>
+                <p class="text-muted text-xs font-mono mt-1">Listing all repositories...</p>
+            </div>
+            <div class="text-xs font-mono text-right hidden md:block text-muted">
+                TOTAL: {projects.length} <br>
+                ACCESS: PUBLIC
+            </div>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {projects.map((p, i) => {
+                // Determine description: try to fetch from t() using desc_key, otherwise fallback
+                // For Exam Management (first one), I didn't add a specific key in previous ui.ts dump for 'projects'.
+                // I will just use the hardcoded spanish one if key is missing or 'about' key.
+                // Actually I will manually handle the Exam Management desc to be safe.
+                let description = "";
+                if (p.title === 'Exam Management') {
+                     description = lang === 'es' ? 'Sistema de gestión de evaluaciones con Django y PostgreSQL.' : 'Evaluation management system with Django and PostgreSQL.';
+                } else {
+                     // @ts-ignore
+                     description = t(p.desc_key);
+                }
+
+                return (
+                <div class="group relative bg-white/5 border border-white/5 hover:border-primary/50 transition-all duration-300 p-6 flex flex-col h-64 overflow-hidden hover:bg-white/[0.07]">
+                    
+                    <!-- Número de índice decorativo -->
+                    <span class="absolute top-2 right-4 text-[4rem] font-pixel text-white/[0.02] group-hover:text-primary/[0.1] transition-colors -z-0">
+                        0{i + 1}
+                    </span>
+
+                    <div class="relative z-10 flex flex-col h-full">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="font-bold text-xl group-hover:text-primary transition-colors">{p.title}</h3>
+                            <ArrowUpRight size={18} className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all text-primary"/>
+                        </div>
+                        
+                        <p class="text-sm text-gray-400 mb-4 line-clamp-3">{description}</p>
+                        
+                        <div class="mt-auto flex flex-wrap gap-2">
+                            {p.tags.map(tag => (
+                                <span class="text-[10px] font-mono border border-white/10 px-1 text-muted group-hover:border-primary/30 group-hover:text-primary transition-colors">
+                                    {tag}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+                    
+                    <!-- Barra de estado -->
+                    <div class="absolute bottom-0 left-0 w-full h-1 bg-white/5 group-hover:bg-primary transition-colors"></div>
+                </div>
+            )})}
+        </div>
+    </div>
+
+    <CyberNav slot="nav" />
+</Layout>
