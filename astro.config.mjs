@@ -8,7 +8,7 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://raydel-reuco.dev", // Actualiza con tu dominio real
+  site: "https://portfolio-ray.is-a.dev", // Corrected to match deployment
   compressHTML: true,
   prefetch: true,
   build: {
