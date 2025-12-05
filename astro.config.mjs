@@ -10,8 +10,9 @@ import icon from "astro-icon";
 export default defineConfig({
   site: "https://raydel-reuco.dev", // Actualiza con tu dominio real
   compressHTML: true,
+  prefetch: true,
   build: {
-    inlineStylesheets: "auto",
+    inlineStylesheets: "always",
   },
   vite: {
     plugins: [tailwindcss()],

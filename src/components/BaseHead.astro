@@ -17,7 +17,7 @@ const { title, description, image = '/og-image.png' } = Astro.props;
 <meta name="generator" content={Astro.generator} />
 
 <!-- Preload critical fonts -->
-<link rel="preload" href="/fonts/vergilia.ttf" as="font" type="font/ttf" crossorigin />
+<link rel="preload" href="/fonts/vergilia.ttf" as="font" type="font/ttf" crossorigin transition:persist />
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />

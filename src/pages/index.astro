@@ -1,6 +1,11 @@
 ---
-import { defaultLang } from '../i18n/ui';
+import { defaultLang } from '../i18n/ui'; // Keep existing import
+import { ClientRouter } from 'astro:transitions';
+
 const redirectUrl = `/${defaultLang}/`;
+const projectsUrl = `/${defaultLang}/projects`;
+const aboutUrl = `/${defaultLang}/about`;
+const contactUrl = `/${defaultLang}/contact`;
 ---
 
 <!DOCTYPE html>
@@ -8,9 +13,17 @@ const redirectUrl = `/${defaultLang}/`;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="0;url={redirectUrl}">
+    <!-- Removed meta refresh to allow manual control for smoother transition -->
     <meta name="theme-color" content="#050505">
     <title>Loading...</title>
+    
+    <ClientRouter />
+
+    <!-- Agressive Preloading -->
+    <link rel="prefetch" href={redirectUrl} />
+    <link rel="prefetch" href={projectsUrl} />
+    <link rel="prefetch" href={aboutUrl} />
+    <link rel="prefetch" href={contactUrl} />
     <style>
         * {
             margin: 0;
@@ -65,9 +78,20 @@ const redirectUrl = `/${defaultLang}/`;
         <div class="text">INITIALIZING_</div>
     </div>
     
-    <script define:vars={{ redirectUrl }}>
-        // Immediate redirect via JavaScript (faster than meta refresh)
-        window.location.replace(redirectUrl);
+    <!-- Hidden link for smoother transition via ClientRouter -->
+    <a href={redirectUrl} id="redirect-link" style="display: none;" aria-hidden="true">Enter</a>
+
+    <script>
+        // Use a small delay to allow prefetching to start and animations to play
+        // Then simulate a click to trigger Astro's ClientRouter view transition
+        window.addEventListener('load', () => {
+            const link = document.getElementById('redirect-link');
+            if (link) {
+                 setTimeout(() => {
+                    link.click();
+                }, 800); // 800ms delay for "fake" loading and resource fetching
+            }
+        });
     </script>
 </body>
 </html>
