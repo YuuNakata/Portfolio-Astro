@@ -35,8 +35,6 @@ export const ui = {
       "Gestor de tareas con estética anime/minimalista. Organización eficiente con comandos como bot en Telegram.",
     "projects.desc.postbot":
       "Bot de automatización para gestión de posts y redes sociales.",
-    "projects.desc.moogle":
-      "Clon del motor de búsqueda académico Moogle!. Implementación de algoritmos de recuperación de información.",
     "projects.role.frontend": "Frontend",
     "projects.role.fullstack": "Full Stack",
     "projects.role.automation": "Automatización",
@@ -52,7 +50,7 @@ export const ui = {
     "about.exp1.place": "FACULTAD DE TECNOLOGÍAS INTERACTIVAS",
     "about.exp1.desc":
       "> Desarrollador líder para 'Sistema de Gestión de Exámenes'.<br>> Arquitectura de sistema de permisos RBAC usando Django.<br>> Optimización de base de datos para alta concurrencia.",
-    "about.exp2.role": "Ingeniero de Software (.NET)",
+    "about.exp2.role": "Desarrollador Web (.NET)",
     "about.exp2.place": "PROYECTO UNIVERSITARIO: MOOGLE!",
     "about.exp2.desc":
       "> Desarrollo de motor de búsqueda vectorial (C# / Blazor).<br>> Implementación de álgebra lineal para recuperación de texto.<br>> Lógica personalizada de tokenización y ranking.",
@@ -115,7 +113,7 @@ export const ui = {
     "about.exp1.place": "INTERACTIVE TECHNOLOGIES FACULTY",
     "about.exp1.desc":
       "> Lead developer for 'Exam Management System'.<br>> Architected RBAC auth system using Django.<br>> Database optimization for high-concurrency access.",
-    "about.exp2.role": "Software Engineer (.NET)",
+    "about.exp2.role": "Web Developer (.NET)",
     "about.exp2.place": "UNIVERSITY PROJECT: MOOGLE!",
     "about.exp2.desc":
       "> Developed a vectorial search engine (C# / Blazor).<br>> Implemented linear algebra algorithms for text retrieval.<br>> Custom tokenization and ranking logic.",
